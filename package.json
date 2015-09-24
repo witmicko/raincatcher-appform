@@ -1,0 +1,23 @@
+{
+  "name": "fh-wfm-appform",
+  "version": "0.0.1",
+  "description": "An appform module for WFM",
+  "main": "appform.js",
+  "scripts": {
+    "build": "wfm-template-build -m 'wfm.appform'",
+    "watch": "wfm-template-build -w -m 'wfm.appform'"
+  },
+  "keywords": [
+    "wfm",
+    "appform"
+  ],
+  "author": "Brian Leathem",
+  "license": "Copyright (c) 2015 FeedHenry Ltd, All Rights Reserved.",
+  "devDependencies": {
+    "fh-wfm-template-build": "0.0.1"
+  },
+  "dependencies": {
+    "angular": "^1.4.6",
+    "lodash": "^3.10.1"
+  }
+}
