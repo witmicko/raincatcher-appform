@@ -1,3 +1,3 @@
-# FeedHenry WFM vehicle-inspection
+# FeedHenry WFM AppForms
 
-A vehicle-inspection module for FeedHenry WFM.
+A AppForm module for FeedHenry WFM.
