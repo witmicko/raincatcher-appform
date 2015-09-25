@@ -50,7 +50,7 @@ ngModule.run(function($q, mediator) {
       });
     });
   });
-})
+});
 
 ngModule.directive('appformView', function($templateCache, mediator) {
   return {
@@ -65,6 +65,58 @@ ngModule.directive('appformView', function($templateCache, mediator) {
     }
   , controllerAs: 'ctrl'
   };
-})
+});
+
+ngModule.directive('appformPortal', function($templateCache, mediator) {
+  return {
+    restrict: 'E'
+  , template: $templateCache.get('wfm-template/appform-portal.tpl.html')
+  , scope: {
+      form: '=value'
+    }
+  , controller: function($scope) {
+      var self = this;
+      self.fields = $scope.form.fields;
+    }
+  , controllerAs: 'ctrl'
+  };
+});
+
+ngModule.directive('appformField', function($templateCache, mediator) {
+  return {
+    restrict: 'E'
+  , template: $templateCache.get('wfm-template/appform-field.tpl.html')
+  , link: function (scope, element, attrs) {
+    }
+  , scope: {
+      field: '=value'
+    }
+  , controller: function($scope) {
+    /*
+    $$hashKey: "object:7"
+    _id: "5602dd37ab4225aa697af383"
+    _localLastUpdate: Fri Sep 25 2015 06:42:15 GMT-0700 (PDT)
+    _ludid: null
+    _type: "field"
+    adminOnly: false
+    fieldCode: "name"
+    fieldOptions: Object
+    helpText: "Input your first and last name"
+    name: "Name"
+    repeating: false
+    required: true
+    type: "text"
+    */
+      var self = this;
+      self.field = {
+        _id: $scope.field._id,
+        name: $scope.field.name,
+        type: ['text', 'date', 'number'].indexOf($scope.field.type) > -1 ? $scope.field.type : 'text'
+      };
+      self.model = {};
+    }
+  , controllerAs: 'ctrl'
+  };
+});
 
 module.exports = 'wfm.appform';

@@ -1,0 +1,7 @@
+<div class="form-group" ng-class="{ 'has-error' : workorderForm.finishDate.$invalid && !workorderForm.finishDate.$pristine }">
+  <label for="inputFinishDate" class="col-sm-2 control-label">{{ctrl.field.name}}</label>
+  <div class="col-sm-10">
+    <input type="{{ctrl.field.type}}" class="form-control" id="inputFinishDate" name="finishDate" ng-model="ctrl.model.finishDate" required>
+    <p ng-show="workorderForm.finishDate.$invalid && !workorderForm.finishDate.$pristine" class="help-block">A finish date is required.</p>
+  </div>
+</div>
