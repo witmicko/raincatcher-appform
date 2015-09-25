@@ -1,6 +1,6 @@
 {
   "name": "fh-wfm-appform",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An appform module for WFM",
   "main": "appform.js",
   "scripts": {
