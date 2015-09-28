@@ -1,0 +1,26 @@
+<div class="appform-field-location">
+  <div class="col-sm-12">
+    {{ctrl.field.props.helpText}}
+  </div>
+  <div class="col-sm-5">
+    <input type="text"
+      class="form-control"
+      placeholder="Longitude"
+      name="inputNameX"
+      ng-model="ctrl.model.lat"
+      ng-required="ctrl.field.props.required"
+    ></input>
+  </div>
+  <div class="col-sm-5">
+    <input type="text"
+      class="form-control"
+      placeholder="Longitude"
+      name="inputNameY"
+      ng-model="ctrl.model.long"
+      ng-required="ctrl.field.props.required"
+    ></input>
+  </div>
+  <div class="col-sm-2">
+    <button ng-click="ctrl.getLocation()">X</button>
+  </div>
+</div>
