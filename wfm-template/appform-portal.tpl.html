@@ -3,8 +3,9 @@
     <div class="panel-heading"><h3>App form</h3></div>
     <div class="panel-body">
       <form class="form-horizontal" name="workorderForm" ng-submit="ctrl.done(workorderForm.$valid)" novalidate>
+        {{ctrl.model}}
         <div ng-repeat="field in ctrl.fields">
-          <appform-field value="field"></appform-field>
+          <appform-field field="field" value="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>
         </div>
 
         <button type="submit" class="btn btn-primary" ng-disabled="workorderForm.$invalid">Save Workorder</button>
