@@ -3,13 +3,13 @@
     <label for="inputName" class="col-sm-2 control-label">{{ctrl.field.props.name}}</label>
     <div ng-switch="ctrl.field.props.type" class="col-sm-10">
       <div ng-switch-when="number">
-        <appform-field-number value="ctrl.model" field="ctrl.field"></appform-field-number>
+        <appform-portal-field-number value="ctrl.model" field="ctrl.field"></appform-field-number>
       </div>
       <div ng-switch-when="location">
-        <appform-field-location value="ctrl.model" field="ctrl.field"></appform-field-location>
+        <appform-portal-field-location value="ctrl.model" field="ctrl.field"></appform-field-location>
       </div>
       <div ng-switch-when="signature">
-        <appform-field-signature></appform-field-signature>
+        <appform-portal-field-signature></appform-field-signature>
       </div>
       <div ng-switch-default>
         <input

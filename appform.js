@@ -46,7 +46,7 @@ ngModule.run(function($q, mediator) {
   });
 });
 
-ngModule.directive('appformView', function($templateCache, mediator) {
+ngModule.directive('appformPortalView', function($templateCache, mediator) {
   return {
     restrict: 'E'
   , template: $templateCache.get('wfm-template/appform-portal-view.tpl.html')
@@ -114,7 +114,7 @@ ngModule.directive('appformPortal', function($templateCache, $q, mediator) {
   };
 });
 
-ngModule.directive('appformField', function($templateCache, $timeout, mediator) {
+ngModule.directive('appformPortalField', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
   , template: $templateCache.get('wfm-template/appform-portal-field.tpl.html')
@@ -174,7 +174,7 @@ ngModule.directive('appformField', function($templateCache, $timeout, mediator) 
   };
 });
 
-ngModule.directive('appformFieldLocation', function($templateCache, $timeout, mediator) {
+ngModule.directive('appformPortalFieldLocation', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
   , template: $templateCache.get('wfm-template/appform-portal-field-location.tpl.html')
@@ -207,7 +207,7 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
   };
 });
 
-ngModule.directive('appformFieldNumber', function($templateCache, $window, $document, $timeout, mediator) {
+ngModule.directive('appformPortalFieldNumber', function($templateCache, $window, $document, $timeout, mediator) {
   return {
     restrict: 'E'
   , template: $templateCache.get('wfm-template/appform-portal-field-number.tpl.html')
@@ -237,7 +237,7 @@ ngModule.directive('appformFieldNumber', function($templateCache, $window, $docu
   };
 });
 
-ngModule.directive('appformFieldSignature', function($templateCache, $window, $document, mediator) {
+ngModule.directive('appformPortalFieldSignature', function($templateCache, $window, $document, mediator) {
   return {
     restrict: 'E'
   , template: '<div class="appform-portal-signature-field"><canvas></canvas></div>'
