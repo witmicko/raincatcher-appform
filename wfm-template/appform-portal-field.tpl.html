@@ -13,7 +13,7 @@
       </div>
       <div ng-switch-default>
         <input
-          type="{{ctrl.inputType}}"
+          type="{{ctrl.inputType(ctrl.field.props.type)}}"
           class="form-control"
           placeholder="{{ctrl.field.props.helpText}}"
           name="inputName"

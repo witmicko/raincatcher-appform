@@ -149,7 +149,9 @@ ngModule.directive('appformField', function($templateCache, $timeout, mediator) 
   , controller: function($scope) {
       var self = this;
       self.field = $scope.field;
-      self.inputType = ['text', 'number', 'date'].indexOf(self.field.type) > -1 ? self.field.type : 'text'
+      self.inputType = function(fieldType) {
+        return ['text', 'number', 'date'].indexOf(fieldType) > -1 ? self.fieldType : 'text';
+      };
       self.model = $scope.model && $scope.model.value ? angular.copy($scope.model.value) : {};
       if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
         self.model = self.field.props.fieldOptions.definition.defaultValue;
