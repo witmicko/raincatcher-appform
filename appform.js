@@ -39,7 +39,7 @@ ngModule.run(function($q, mediator) {
   mediator.subscribe('wfm:appform:form:load', function(formId) {
     formInitPromise.then(function() {
       $fh.forms.getForm({formId: formId}, function (err, form) {
-        // console.log('Retrieved form.', err, form);
+        console.log('Retrieved form.', err, form);
         mediator.publish('wfm:appform:form:loaded', form);
       });
     });
@@ -49,7 +49,7 @@ ngModule.run(function($q, mediator) {
 ngModule.directive('appformView', function($templateCache, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-view.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-portal-view.tpl.html')
   , scope: {
       form: '=value'
     }
@@ -117,7 +117,7 @@ ngModule.directive('appformPortal', function($templateCache, $q, mediator) {
 ngModule.directive('appformField', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-field.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-portal-field.tpl.html')
   , link: function (scope, element, attrs, ctrl) {
       var parentForm = element.parent();
       while (parentForm && parentForm.prop('tagName') !== 'FORM') {
@@ -175,7 +175,7 @@ ngModule.directive('appformField', function($templateCache, $timeout, mediator) 
 ngModule.directive('appformFieldLocation', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-field-location.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-portal-field-location.tpl.html')
   , link: function (scope, element, attrs, ctrl) {
     }
   , scope: {
@@ -208,7 +208,7 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
 ngModule.directive('appformFieldNumber', function($templateCache, $window, $document, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-field-number.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-portal-field-number.tpl.html')
   , link: function (scope, element, attrs, ctrl) {
       var input = element.find('input');
       $timeout(function() {
@@ -238,7 +238,7 @@ ngModule.directive('appformFieldNumber', function($templateCache, $window, $docu
 ngModule.directive('appformFieldSignature', function($templateCache, $window, $document, mediator) {
   return {
     restrict: 'E'
-  , template: '<div class="appform-signature-field"><canvas></canvas></div>'
+  , template: '<div class="appform-portal-signature-field"><canvas></canvas></div>'
   , scope: {
       options: '='
     }
