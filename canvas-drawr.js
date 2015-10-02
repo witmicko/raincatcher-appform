@@ -58,7 +58,7 @@ var CanvasDrawrMouse = function (element, options) {
   }
 };
 
-var CanvasDrawr = function(element, options) {
+var CanvasDrawr = function(element, options, $document, $ionicScrollDelegate) {
   var canvas = element[0].getElementsByTagName('canvas')[0];
   var ctx = canvas.getContext('2d');
   canvas.style.width = '100%'

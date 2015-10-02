@@ -13,15 +13,15 @@
       </div>
       <div ng-switch-default>
         <input
-          type="{{ctrl.inputType(ctrl.field.props.type)}}"
+          type="text"
           class="form-control"
           placeholder="{{ctrl.field.props.helpText}}"
           name="inputName"
           ng-model="ctrl.model"
           ng-required="ctrl.field.props.required"
         ></input>
-        <p ng-show="!fieldForm.inputName.$valid && !fieldForm.inputName.$pristine" class="help-block">A {{ctrl.field.props.name}} is required.</p>
       </div>
+      <p ng-show="!fieldForm.inputName.$valid && !fieldForm.inputName.$pristine" class="help-block">A {{ctrl.field.props.name}} is required.</p>
     </div>
   </div>
 </ng-form>

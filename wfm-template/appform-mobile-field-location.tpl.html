@@ -1,26 +1,23 @@
 <div class="appform-field-location">
-  <div class="col-sm-12">
+  <div>
     {{ctrl.field.props.helpText}}
   </div>
-  <div class="col-sm-5">
-    <input type="text"
-      class="form-control"
+  <div>
+    <input type="number"
       placeholder="Longitude"
       name="inputNameX"
       ng-model="ctrl.model.lat"
       ng-required="ctrl.field.props.required"
+      style="width: 40%; display: inline-block;"
     ></input>
-  </div>
-  <div class="col-sm-5">
-    <input type="text"
-      class="form-control"
+    <input type="number"
       placeholder="Longitude"
       name="inputNameY"
       ng-model="ctrl.model.long"
       ng-required="ctrl.field.props.required"
+      style="width: 40%; display: inline-block;"
     ></input>
+    <button type="button" ng-click="ctrl.setLocation()" class="button">X</button>
   </div>
-  <div class="col-sm-2">
-    <button type="button" ng-click="ctrl.setLocation()">X</button>
-  </div>
+  <ng-transclude></ng-transclude>
 </div>

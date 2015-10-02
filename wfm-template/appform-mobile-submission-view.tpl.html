@@ -1,0 +1,22 @@
+<div class="appform-view">
+  <ion-item class="item-divider">
+    AppFrom
+  </ion-item>
+  <ion-item ng-if="! ctrl.fields" class="loading">
+    Loading appForm submission...
+  </ion-item>
+  <ion-item ng-repeat="field in ctrl.fields">
+    <div ng-switch="field.props.type">
+      <div ng-switch-when="signature">
+        <img ng-src="{{field.value.imgHeader + field.value.data}}" alt="Signature"></img>
+      </div>
+      <div ng-switch-when="location">
+        <div>{{field.props.name}}:</div>
+        <div style="font-weight: bold">{{field.value.lat}}N {{field.value.long}}W</div>
+      </div>
+      <div ng-switch-default>
+        <span>{{field.props.name}}:</span> <span style="font-weight: bold">{{field.value}}</span>
+      </div>
+    </div>
+  </ion-item>
+</div>

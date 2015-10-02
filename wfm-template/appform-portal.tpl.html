@@ -6,7 +6,7 @@
         <div ng-repeat="field in ctrl.fields">
           <appform-portal-field field="field" value="ctrl.model[field.props.fieldCode || field.props._id]"></appform-portal-field>
         </div>
-        <button type="submit" class="btn btn-primary" ng-disabled="workorderForm.$invalid">Save Workorder</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="workorderForm.$invalid">Submit</button>
       </form>
     </div>
   </div>
