@@ -27,7 +27,7 @@ module.exports = function($fh) {
   $fh.forms.registerListener(submissionEventListener, function(err){
     console.log('****************************************');
     if (err) {
-      console.err(err);
+      console.error(err);
     } else {
       console.log('submissionEventListener has now been registered with the $fh.forms Cloud API. Any valid Forms Events will now emit.');
     };

@@ -30,7 +30,7 @@ ngModule.run(function($q, mediator) {
     formInitPromise.then(function() {
       $fh.forms.getForms(function(err, formsModel) {
         if (err) {
-          console.err(err);
+          console.error(err);
           return;
         }
         var forms = formsModel.props.forms;
@@ -43,7 +43,7 @@ ngModule.run(function($q, mediator) {
     formInitPromise.then(function() {
       $fh.forms.getForm({formId: formId}, function (err, form) {
         if (err) {
-          console.err(err);
+          console.error(err);
           return;
         }
         console.log('Retrieved form.', form);
@@ -62,7 +62,7 @@ ngModule.run(function($q, mediator) {
           }
           submission.getForm(function(err, form) {
             if (err) {
-              console.err(err);
+              console.error(err);
               return;
             }
             var fields = form.fields;
@@ -72,7 +72,7 @@ ngModule.run(function($q, mediator) {
               qs.push(deferred.promise);
               submission.getInputValueByFieldId(field.getFieldId(), function(err, fieldValues) {
                 if (err) {
-                  console.err(err);
+                  console.error(err);
                   return;
                 }
                 field.value = fieldValues[0];
@@ -193,7 +193,7 @@ var appformController = function($q, mediator) {
               })
             });
           }, function(err) {
-            console.err(err);
+            console.error(err);
           });
         });
       };
