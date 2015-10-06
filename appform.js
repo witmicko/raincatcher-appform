@@ -207,7 +207,7 @@ var appformController = function($q, mediator) {
                 submissionModel.getForm(function(err, formModel) {
                   submissionModel.on('submitted', function(submissionId) { // TODO: Move this call to allow for offline support
                     console.log('Submission complete for', submissionId);
-                    mediator.publish('wfm:appform-step:done', {
+                    mediator.publish('workflow:step:done', {
                       submissionId: submissionId
                     , submissionLocalId: uploadTask.props.submissionLocalId
                     , formId: form.props._id
