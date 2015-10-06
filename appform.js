@@ -57,35 +57,50 @@ ngModule.run(function($q, mediator) {
       $fh.forms.getSubmissions(function(err, submissions) {
         submissions.getSubmissionByMeta({_ludid: submissionLocalId}, function(err, submission) {
           if (err) {
-            console.log(submissionId, err);
+            console.log(submissionLocalId, err);
             return;
           }
-          submission.getForm(function(err, form) {
+          mediator.publish('wfm:appform:submission:local:loaded', submission);
+        });
+      });
+    });
+  });
+
+  mediator.subscribe('wfm:appform:submission:load', function(submissionId) {
+    formInitPromise.then(function() {
+      $fh.forms.downloadSubmission({submissionId}, function(err, submission) {
+        if (err) {
+          console.log(submissionId, err);
+          return;
+        }
+        mediator.publish('wfm:appform:submission:loaded', submission);
+      });
+    });
+  });
+
+  mediator.subscribe('wfm:appform:submission:fields:load', function(submission) {
+    formInitPromise.then(function() {
+      submission.getForm(function(err, form) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        var fields = form.fields;
+        var qs = [];
+        _.forOwn(fields, function(field, key) {
+          var deferred = $q.defer();
+          qs.push(deferred.promise);
+          submission.getInputValueByFieldId(field.getFieldId(), function(err, fieldValues) {
             if (err) {
               console.error(err);
               return;
             }
-            var fields = form.fields;
-            var qs = [];
-            _.forOwn(fields, function(field, key) {
-              var deferred = $q.defer();
-              qs.push(deferred.promise);
-              submission.getInputValueByFieldId(field.getFieldId(), function(err, fieldValues) {
-                if (err) {
-                  console.error(err);
-                  return;
-                }
-                field.value = fieldValues[0];
-                deferred.resolve(fieldValues);
-              });
-            });
-            $q.all(qs).then(function() {
-              mediator.publish('wfm:appform:submission:local:loaded', {
-                submission: submission,
-                fields: fields
-              });
-            });
+            field.value = fieldValues[0];
+            deferred.resolve(fieldValues);
           });
+        });
+        $q.all(qs).then(function() {
+          mediator.publish('wfm:appform:submission:fields:loaded', fields);
         });
       });
     });
@@ -102,17 +117,22 @@ ngModule.directive('appformMobileSubmissionView', function($templateCache, $q, m
     }
   , controller: function($scope) {
       var self = this;
-      if (! $scope.submissionId && $scope.submissionLocalId) {
+      var promise;
+      if ($scope.submissionLocalId) {
         mediator.publish('wfm:appform:submission:local:load', $scope.submissionLocalId);
-        mediator.once('wfm:appform:submission:local:loaded', function(model) {
-          self.fields = model.fields;
-        });
-      // } else {
-      //   mediator.publish('wfm:appform:submission:load', $scope.submissionId);
-      //   mediator.once('wfm:appform:submission:loaded', function(model) {
-      //     self.fields = model.fields;
-      //   });
+        promise = mediator.promise('wfm:appform:submission:local:loaded');
+      } else if ($scope.submissionId) {
+        mediator.publish('wfm:appform:submission:load', $scope.submissionId);
+        promise = mediator.promise('wfm:appform:submission:loaded');
+      } else {
+        console.error('appformMobileSubmissionView called with no submission');
       }
+      promise.then(function(submission) {
+        mediator.publish('wfm:appform:submission:fields:load', submission);
+        mediator.once('wfm:appform:submission:fields:loaded', function(fields) {
+          self.fields = fields;
+        });
+      });
     }
   , controllerAs: 'ctrl'
   };
@@ -185,9 +205,13 @@ var appformController = function($q, mediator) {
               };
               uploadTask.submissionModel(function(err, submissionModel) {
                 submissionModel.getForm(function(err, formModel) {
-                  mediator.publish('wfm:appform-step:done', {
-                    submissionLocalId: uploadTask.props.submissionLocalId
-                  , formId: form.props._id
+                  submissionModel.on('submitted', function(submissionId) { // TODO: Move this call to allow for offline support
+                    console.log('Submission complete for', submissionId);
+                    mediator.publish('wfm:appform-step:done', {
+                      submissionId: submissionId
+                    , submissionLocalId: uploadTask.props.submissionLocalId
+                    , formId: form.props._id
+                    });
                   });
                 })
               })
