@@ -209,7 +209,7 @@ var appformController = function($q, mediator) {
                     console.log('Submission complete for', submissionId);
                     mediator.publish('workflow:step:done', {
                       submissionId: submissionId
-                    , submissionLocalId: uploadTask.props.submissionLocalId
+                    , _submissionLocalId: uploadTask.props.submissionLocalId
                     , formId: form.props._id
                     });
                   });
