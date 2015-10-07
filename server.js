@@ -16,8 +16,8 @@ module.exports = function($fh) {
   });
 
   submissionEventListener.on('submissionComplete', function(params){
-    var submissionId = params.formSubmission.formSubmittedAgainst._id; //params.submissionId; //FH-2213
-    var submissionCompletedTimestamp = params.formSubmission.submissionCompletedTimestamp; //params.submissionCompletedTimestamp; //FH-2213
+    var submissionId = params.submissionId;
+    var submissionCompletedTimestamp = params.submissionCompletedTimestamp;
     console.log('****************************************');
     console.log('params', params);
     console.log('Submission with ID ' + submissionId + ' has completed at ' + submissionCompletedTimestamp);
