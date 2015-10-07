@@ -1,7 +1,7 @@
 <ng-form name="fieldForm" ng-submit="ctrl.submit()">
   <div class="form-group {{ctrl.field.props.fieldCode}}" ng-class="{ 'has-error' : fieldForm.inputName.$invalid && !fieldForm.inputName.$pristine }">
     <label for="inputName" class="item item-input">
-      <div ng-switch="ctrl.field.props.type">
+      <div ng-switch="ctrl.field.props.type" style="display: flex; flex-grow: 1;">
         <div ng-switch-when="number">
           <span class="input-label">{{ctrl.field.props.name}}</span>
           <appform-portal-field-number value="ctrl.model" field="ctrl.field"></appform-portal-field-number>
@@ -13,8 +13,8 @@
               >A {{ctrl.field.props.name}} is required</p>
           </appform-mobile-field-location>
         </div>
-        <div ng-switch-when="signature">
-          <appform-mobile-field-signature></appform-mobile-field-signature>
+        <div ng-switch-when="signature" style="display: flex; flex-grow: 1;">
+          <appform-mobile-field-signature style="display: flex; flex-grow: 1;"></appform-mobile-field-signature>
         </div>
         <div ng-switch-default>
           <span class="input-label">{{ctrl.field.props.name}}</span>

@@ -398,7 +398,7 @@ ngModule.directive('appformPortalFieldSignature', function($templateCache, $wind
 ngModule.directive('appformMobileFieldSignature', function($templateCache, $window, $document, mediator, $ionicScrollDelegate) {
   return {
     restrict: 'E'
-  , template: '<div class="appform-portal-signature-field"><canvas></canvas></div>'
+  , template: '<div class="appform-portal-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
   , scope: {
       options: '='
     }
