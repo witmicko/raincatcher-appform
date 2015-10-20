@@ -89,12 +89,16 @@ var CanvasDrawr = function(element, options, $document, $ionicScrollDelegate) {
       canvasNg.on('touchstart', self.preDraw);
       canvasNg.on('touchmove', self.draw);
       canvasNg.on('touchend', function(event) {
-        $ionicScrollDelegate.freezeAllScrolls(false);
+        if ($ionicScrollDelegate) {
+          $ionicScrollDelegate.freezeAllScrolls(false);
+        }
       });
     },
 
     preDraw: function(event) {
-      $ionicScrollDelegate.freezeAllScrolls(true);
+      if ($ionicScrollDelegate) {
+        $ionicScrollDelegate.freezeAllScrolls(true);
+      }
       rect = canvas.getBoundingClientRect();
       offset = {
         top: rect.top + $document[0].body.scrollTop,

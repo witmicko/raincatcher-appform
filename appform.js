@@ -396,7 +396,7 @@ ngModule.directive('appformPortalFieldSignature', function($templateCache, $wind
   };
 });
 
-ngModule.directive('appformMobileFieldSignature', function($templateCache, $window, $document, mediator, $ionicScrollDelegate) {
+ngModule.directive('appformMobileFieldSignature', function($templateCache, $window, $document, $injector, mediator) {
   return {
     restrict: 'E'
   , template: '<div class="appform-portal-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
@@ -405,6 +405,7 @@ ngModule.directive('appformMobileFieldSignature', function($templateCache, $wind
     }
   , link: function (scope, element, attrs) {
       var options = scope.options || {};
+      var $ionicScrollDelegate = $injector.has('ionicScrollDelegate') ? $injector.get('ionicScrollDelegate') : null;
       var drawr = new canvasDrawr.CanvasDrawr(element, options, $document, $ionicScrollDelegate);
     }
   };
