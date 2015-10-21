@@ -1,6 +1,5 @@
 'use strict';
 
-var angular = require('angular');
 var _ = require('lodash');
 var canvasDrawr = require('./canvas-drawr');
 
