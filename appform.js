@@ -141,7 +141,7 @@ ngModule.directive('appformMobileSubmissionView', function($templateCache, $q, m
 ngModule.directive('appformPortal', function($templateCache, $q, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-portal.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-mobile.tpl.html')
   , scope: {
       form: '=form'
     }
@@ -172,6 +172,7 @@ var appformController = function($q, mediator) {
       self.model[field.props.fieldCode || field.props._id] = {};
     });
     self.done = function(isValid) {
+      $scope.submitted = true;
       if (isValid) {
         $scope.$broadcast('parentFormSubmitted');
         // console.log('Form model', self.model);
@@ -277,7 +278,7 @@ var appformFieldController = function($scope) {
 ngModule.directive('appformPortalField', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-portal-field.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-mobile-field.tpl.html')
   , scope: {
       field: '=',
       model: '=value'
@@ -327,7 +328,7 @@ var appformLocationController = function($scope) {
 ngModule.directive('appformPortalFieldLocation', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-portal-field-location.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-mobile-field-location.tpl.html')
   , scope: {
       field: '=',
       model: '=value'
@@ -340,7 +341,6 @@ ngModule.directive('appformPortalFieldLocation', function($templateCache, $timeo
 ngModule.directive('appformMobileFieldLocation', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , transclude: true
   , template: $templateCache.get('wfm-template/appform-mobile-field-location.tpl.html')
   , scope: {
       field: '=',
@@ -354,7 +354,7 @@ ngModule.directive('appformMobileFieldLocation', function($templateCache, $timeo
 ngModule.directive('appformPortalFieldNumber', function($templateCache, $window, $document, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-portal-field-number.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-mobile-field-number.tpl.html')
   , link: function (scope, element, attrs, ctrl) {
       var input = element.find('input');
       $timeout(function() {
@@ -367,7 +367,8 @@ ngModule.directive('appformPortalFieldNumber', function($templateCache, $window,
     }
   , scope: {
       field: '=',
-      model: '=value'
+      model: '=value',
+      fieldForm: '=form'
     }
   , controller: function($scope) {
       var self = this;
@@ -384,7 +385,7 @@ ngModule.directive('appformPortalFieldNumber', function($templateCache, $window,
 ngModule.directive('appformPortalFieldSignature', function($templateCache, $window, $document, mediator) {
   return {
     restrict: 'E'
-  , template: '<div class="appform-portal-signature-field"><canvas></canvas></div>'
+  , template: '<div class="appform-mobile-signature-field"><canvas></canvas></div>'
   , scope: {
       options: '='
     }
@@ -398,7 +399,7 @@ ngModule.directive('appformPortalFieldSignature', function($templateCache, $wind
 ngModule.directive('appformMobileFieldSignature', function($templateCache, $window, $document, $injector, mediator) {
   return {
     restrict: 'E'
-  , template: '<div class="appform-portal-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
+  , template: '<div class="appform-mobile-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
   , scope: {
       options: '='
     }

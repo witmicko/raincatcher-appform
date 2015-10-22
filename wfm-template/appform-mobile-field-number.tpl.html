@@ -1,0 +1,17 @@
+<md-input-container class="{{field.props.fieldCode}} appform-field-number">
+  <label for="inputName" class="">{{field.props.name}}</label>
+  <input type="number"
+    class="form-control"
+    placeholder="{{ctrl.field.props.helpText}}"
+    name="inputName"
+    ng-model="ctrl.model"
+    min="{{field.props.fieldOptions.validation.min}}"
+    max="{{field.props.fieldOptions.validation.max}}"
+    ng-required="ctrl.field.props.required"
+  ></input>
+  <div ng-messages="fieldForm.inputName.$error" ng-show="ctrl.submitted || fieldForm.inputName.$dirty">
+    <div ng-message="required">A {{field.props.name}} is required.</div>
+    <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>
+    <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>
+  </div>
+</md-input-container>
