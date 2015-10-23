@@ -138,18 +138,6 @@ ngModule.directive('appformMobileSubmissionView', function($templateCache, $q, m
   };
 });
 
-ngModule.directive('appformPortal', function($templateCache, $q, mediator) {
-  return {
-    restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile.tpl.html')
-  , scope: {
-      form: '=form'
-    }
-  , controller: appformController($q, mediator)
-  , controllerAs: 'ctrl'
-  };
-});
-
 ngModule.directive('appformMobile', function($templateCache, $q, mediator) {
   return {
     restrict: 'E'
@@ -157,13 +145,7 @@ ngModule.directive('appformMobile', function($templateCache, $q, mediator) {
   , scope: {
       form: '=form'
     }
-  , controller: appformController($q, mediator)
-  , controllerAs: 'ctrl'
-  };
-});
-
-var appformController = function($q, mediator) {
-  return function($scope) {
+  , controller: function($scope) {
     var self = this;
     var form = $scope.form;
     self.fields = form.fields;
@@ -224,67 +206,6 @@ var appformController = function($q, mediator) {
       };
     }
   }
-}
-
-var appformFieldLink = function($timeout) {
-  return function (scope, element, attrs, ctrl) {
-    var parentForm = element.parent();
-    while (parentForm && parentForm.prop('tagName') !== 'FORM') {
-      parentForm = parentForm.parent();
-    };
-    if (parentForm) {
-      var formController = element.find('ng-form').controller('form');
-      scope.$on('parentFormSubmitted',function(event) {
-        ctrl.submit(element);
-        formController.$setSubmitted();
-      });
-    };
-    var input = element.find('input');
-    if (scope.field.props.type === 'number') {
-      $timeout(function() {
-        var digits = Math.max(scope.field.props.fieldOptions.validation.max.toString().length, scope.field.props.fieldOptions.validation.min.toString().length);
-        if (digits) {
-          digits = digits + 6;
-          element.find('input').css('width', digits + 'ex');
-        }
-      });
-    }
-    input.attr()
-  }
-}
-
-var appformFieldController = function($scope) {
-  var self = this;
-  self.field = $scope.field;
-  self.model = $scope.model && $scope.model.value ? angular.copy($scope.model.value) : {};
-  if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
-    self.model = self.field.props.fieldOptions.definition.defaultValue;
-  };
-  self.submit = function(element) {
-    if (self.field.props.type === 'signature') {
-      var canvas = element[0].getElementsByTagName('canvas')[0];
-      self.model = canvas.toDataURL();
-    } else if (self.field.props.type === 'location') {
-      var inputs = element[0].getElementsByTagName('input');
-      self.model = {
-        lat: inputs[0].value,
-        long: inputs[1].value
-      }
-    }
-    $scope.model.value = self.model;
-  }
-}
-
-ngModule.directive('appformPortalField', function($templateCache, $timeout, mediator) {
-  return {
-    restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile-field.tpl.html')
-  , scope: {
-      field: '=',
-      model: '=value'
-    }
-  , link: appformFieldLink($timeout)
-  , controller: appformFieldController
   , controllerAs: 'ctrl'
   };
 });
@@ -297,43 +218,51 @@ ngModule.directive('appformMobileField', function($templateCache, $timeout, medi
       field: '=',
       model: '=value'
     }
-  , link: appformFieldLink($timeout)
-  , controller: appformFieldController
-  , controllerAs: 'ctrl'
-  };
-});
-
-var appformLocationController = function($scope) {
-  var self = this;
-  self.field = $scope.field;
-  self.model = $scope.model || {};
-  self.isValid = function(form, element) {
-    console.log('form', form);
-    console.log('element', element);
-  }
-  self.setLocation = function() {
-    navigator.geolocation.getCurrentPosition(function(pos) {
-      $scope.$apply(function() {
-        self.model.lat = pos.coords.latitude;
-        self.model.long = pos.coords.longitude;
-      });
-    }, function(err) {
-      alert('Unable to get current position');
-      self.model.lat = -1;
-      self.model.long = -1;
-    });
-  }
-}
-
-ngModule.directive('appformPortalFieldLocation', function($templateCache, $timeout, mediator) {
-  return {
-    restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile-field-location.tpl.html')
-  , scope: {
-      field: '=',
-      model: '=value'
+  , link: function (scope, element, attrs, ctrl) {
+      var parentForm = element.parent();
+      while (parentForm && parentForm.prop('tagName') !== 'FORM') {
+        parentForm = parentForm.parent();
+      };
+      if (parentForm) {
+        var formController = element.find('ng-form').controller('form');
+        scope.$on('parentFormSubmitted',function(event) {
+          ctrl.submit(element);
+          formController.$setSubmitted();
+        });
+      };
+      var input = element.find('input');
+      if (scope.field.props.type === 'number') {
+        $timeout(function() {
+          var digits = Math.max(scope.field.props.fieldOptions.validation.max.toString().length, scope.field.props.fieldOptions.validation.min.toString().length);
+          if (digits) {
+            digits = digits + 6;
+            element.find('input').css('width', digits + 'ex');
+          }
+        });
+      }
+      input.attr()
     }
-  , controller: appformLocationController
+  , controller: function($scope) {
+    var self = this;
+    self.field = $scope.field;
+    self.model = $scope.model && $scope.model.value ? angular.copy($scope.model.value) : {};
+    if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
+      self.model = self.field.props.fieldOptions.definition.defaultValue;
+    };
+    self.submit = function(element) {
+      if (self.field.props.type === 'signature') {
+        var canvas = element[0].getElementsByTagName('canvas')[0];
+        self.model = canvas.toDataURL();
+      } else if (self.field.props.type === 'location') {
+        var inputs = element[0].getElementsByTagName('input');
+        self.model = {
+          lat: inputs[0].value,
+          long: inputs[1].value
+        }
+      }
+      $scope.model.value = self.model;
+    }
+  }
   , controllerAs: 'ctrl'
   };
 });
@@ -346,53 +275,28 @@ ngModule.directive('appformMobileFieldLocation', function($templateCache, $timeo
       field: '=',
       model: '=value'
     }
-  , controller: appformLocationController
-  , controllerAs: 'ctrl'
-  };
-});
-
-ngModule.directive('appformPortalFieldNumber', function($templateCache, $window, $document, $timeout, mediator) {
-  return {
-    restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile-field-number.tpl.html')
-  , link: function (scope, element, attrs, ctrl) {
-      var input = element.find('input');
-      $timeout(function() {
-        var digits = Math.max(scope.field.props.fieldOptions.validation.max.toString().length, scope.field.props.fieldOptions.validation.min.toString().length);
-        if (digits) {
-          digits = digits + 6;
-          element.find('input').css('width', digits + 'ex');
-        }
+  , controller: function($scope) {
+    var self = this;
+    self.field = $scope.field;
+    self.model = $scope.model || {};
+    self.isValid = function(form, element) {
+      console.log('form', form);
+      console.log('element', element);
+    }
+    self.setLocation = function() {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        $scope.$apply(function() {
+          self.model.lat = pos.coords.latitude;
+          self.model.long = pos.coords.longitude;
+        });
+      }, function(err) {
+        alert('Unable to get current position');
+        self.model.lat = -1;
+        self.model.long = -1;
       });
     }
-  , scope: {
-      field: '=',
-      model: '=value',
-      fieldForm: '=form'
-    }
-  , controller: function($scope) {
-      var self = this;
-      self.field = $scope.field;
-      self.model = $scope.model;
-      if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
-        self.model = parseFloat(self.field.props.fieldOptions.definition.defaultValue);
-      };
-    }
+  }
   , controllerAs: 'ctrl'
-  };
-});
-
-ngModule.directive('appformPortalFieldSignature', function($templateCache, $window, $document, mediator) {
-  return {
-    restrict: 'E'
-  , template: '<div class="appform-mobile-signature-field"><canvas></canvas></div>'
-  , scope: {
-      options: '='
-    }
-  , link: function (scope, element, attrs) {
-      var options = scope.options || {};
-      var drawr = new canvasDrawr.CanvasDrawrMouse(element, options);
-    }
   };
 });
 
