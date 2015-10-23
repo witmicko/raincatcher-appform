@@ -106,10 +106,10 @@ ngModule.run(function($q, mediator) {
   });
 });
 
-ngModule.directive('appformMobileSubmissionView', function($templateCache, $q, mediator) {
+ngModule.directive('appformSubmission', function($templateCache, $q, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile-submission-view.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-submission.tpl.html')
   , scope: {
       submissionLocalId: '=submissionLocalId'
     , submissionId: '=submissionId'
@@ -124,7 +124,7 @@ ngModule.directive('appformMobileSubmissionView', function($templateCache, $q, m
         mediator.publish('wfm:appform:submission:load', $scope.submissionId);
         promise = mediator.promise('wfm:appform:submission:'+$scope.submissionId+':loaded');
       } else {
-        console.error('appformMobileSubmissionView called with no submission');
+        console.error('appformSubmission called with no submission');
       }
       promise.then(function(submission) {
         self.form = submission.form;
@@ -138,10 +138,10 @@ ngModule.directive('appformMobileSubmissionView', function($templateCache, $q, m
   };
 });
 
-ngModule.directive('appformMobile', function($templateCache, $q, mediator) {
+ngModule.directive('appform', function($templateCache, $q, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile.tpl.html')
+  , template: $templateCache.get('wfm-template/appform.tpl.html')
   , scope: {
       form: '=form'
     }
@@ -210,10 +210,10 @@ ngModule.directive('appformMobile', function($templateCache, $q, mediator) {
   };
 });
 
-ngModule.directive('appformMobileField', function($templateCache, $timeout, mediator) {
+ngModule.directive('appformField', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile-field.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-field.tpl.html')
   , scope: {
       field: '=',
       model: '=value'
@@ -267,10 +267,10 @@ ngModule.directive('appformMobileField', function($templateCache, $timeout, medi
   };
 });
 
-ngModule.directive('appformMobileFieldLocation', function($templateCache, $timeout, mediator) {
+ngModule.directive('appformFieldLocation', function($templateCache, $timeout, mediator) {
   return {
     restrict: 'E'
-  , template: $templateCache.get('wfm-template/appform-mobile-field-location.tpl.html')
+  , template: $templateCache.get('wfm-template/appform-field-location.tpl.html')
   , scope: {
       field: '=',
       model: '=value'
@@ -300,10 +300,10 @@ ngModule.directive('appformMobileFieldLocation', function($templateCache, $timeo
   };
 });
 
-ngModule.directive('appformMobileFieldSignature', function($templateCache, $window, $document, $injector, mediator) {
+ngModule.directive('appformFieldSignature', function($templateCache, $window, $document, $injector, mediator) {
   return {
     restrict: 'E'
-  , template: '<div class="appform-mobile-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
+  , template: '<div class="appform-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
   , scope: {
       options: '='
     }

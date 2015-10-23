@@ -4,12 +4,12 @@
       <appform-portal-field-number value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-portal-field-number>
     </div>
     <div ng-switch-when="location">
-      <appform-mobile-field-location value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-mobile-field-location>
+      <appform-field-location value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-field-location>
     </div>
     <div ng-switch-when="signature" style="display: flex; flex-grow: 1;">
       <md-input-container>
         <label>{{ctrl.field.props.name}}</label>
-        <appform-mobile-field-signature style="display: flex; flex-grow: 1;"></appform-mobile-field-signature>
+        <appform-field-signature style="display: flex; flex-grow: 1;"></appform-field-signature>
       </md-input-container>
     </div>
     <div ng-switch-default>
