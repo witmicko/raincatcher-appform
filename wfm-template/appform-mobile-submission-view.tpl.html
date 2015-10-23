@@ -1,11 +1,11 @@
 <div class="appform-view">
-  <ion-item class="item-divider">
-    {{ctrl.form.props.name}}
-  </ion-item>
-  <ion-item ng-if="! ctrl.fields" class="loading">
+  <md-list-item>
+    <md-subheader class="md-no-sticky"><h3>{{ctrl.form.props.name}}</h3></md-subheader>
+  </md-list-item>
+  <md-list-item ng-if="! ctrl.fields" class="loading">
     Loading appForm submission...
-  </ion-item>
-  <ion-item ng-repeat="field in ctrl.fields">
+  </md-list-item>
+  <md-list-item ng-repeat="field in ctrl.fields">
     <div ng-switch="field.props.type">
       <div ng-switch-when="signature">
         <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="Signature"></img>
@@ -19,5 +19,5 @@
         <span>{{field.props.name}}:</span> <span style="font-weight: bold">{{field.value}}</span>
       </div>
     </div>
-  </ion-item>
+  </md-list-item>
 </div>
