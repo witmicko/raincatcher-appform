@@ -232,17 +232,6 @@ ngModule.directive('appformField', function($templateCache, $timeout, mediator) 
           formController.$setSubmitted();
         });
       };
-      var input = element.find('input');
-      if (scope.field.props.type === 'number') {
-        $timeout(function() {
-          var digits = Math.max(scope.field.props.fieldOptions.validation.max.toString().length, scope.field.props.fieldOptions.validation.min.toString().length);
-          if (digits) {
-            digits = digits + 6;
-            element.find('input').css('width', digits + 'ex');
-          }
-        });
-      }
-      input.attr()
     }
   , controller: function($scope) {
     var self = this;
@@ -308,29 +297,19 @@ ngModule.directive('appformFieldNumber', function($templateCache, $window, $docu
  return {
    restrict: 'E'
  , template: $templateCache.get('wfm-template/appform-field-number.tpl.html')
- , link: function (scope, element, attrs, ctrl) {
-     var input = element.find('input');
-     $timeout(function() {
-       var digits = Math.max(scope.field.props.fieldOptions.validation.max.toString().length, scope.field.props.fieldOptions.validation.min.toString().length);
-       if (digits) {
-         digits = digits + 6;
-         element.find('input').css('width', digits + 'ex');
-       }
-     });
-   }
  , scope: {
-     field: '=',
-     model: '=value',
-     fieldForm: '=form'
-   }
-   , controller: function($scope) {
-     var self = this;
-     self.field = $scope.field;
-     self.model = $scope.model;
-     if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
-       self.model = parseFloat(self.field.props.fieldOptions.definition.defaultValue);
-     };
-   }
+   field: '=',
+   model: '=value',
+   fieldForm: '=form'
+ }
+ , controller: function($scope) {
+   var self = this;
+   self.field = $scope.field;
+   self.model = $scope.model;
+   if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
+     self.model = parseFloat(self.field.props.fieldOptions.definition.defaultValue);
+   };
+ }
  , controllerAs: 'ctrl'
  };
 });
