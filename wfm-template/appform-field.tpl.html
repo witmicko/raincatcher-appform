@@ -1,5 +1,5 @@
 <ng-form name="fieldForm" ng-submit="ctrl.submit()">
-  <div ng-switch="ctrl.field.props.type" style="display: flex; flex-grow: 1;">
+  <div ng-switch="ctrl.field.props.type">
 
     <div ng-switch-when="number">
       <appform-field-number value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-field-number>
