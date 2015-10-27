@@ -1,21 +1,21 @@
 <ng-form name="fieldForm" ng-submit="ctrl.submit()">
   <div ng-switch="ctrl.field.props.type" style="display: flex; flex-grow: 1;">
-    
+
     <div ng-switch-when="number">
-      <appform-portal-field-number value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-portal-field-number>
+      <appform-field-number value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-field-number>
     </div>
-    
+
     <div ng-switch-when="location">
       <appform-field-location value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-field-location>
     </div>
-    
-    <div ng-switch-when="signature" flex class="appform-signature">
+
+    <div ng-switch-when="signature" flex class="appform-signature" form="fieldForm">
       <md-input-container>
         <p class="md-caption">{{ctrl.field.props.name}}</p>
         <appform-field-signature></appform-field-signature>
       </md-input-container>
     </div>
-    
+
     <div ng-switch-default flex>
       <md-input-container>
         <label>{{ctrl.field.props.name}}</label>
@@ -31,6 +31,6 @@
         </div>
       </md-input-container>
     </div>
-  
+
   </div>
 </ng-form>

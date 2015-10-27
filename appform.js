@@ -272,8 +272,9 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
     restrict: 'E'
   , template: $templateCache.get('wfm-template/appform-field-location.tpl.html')
   , scope: {
-      field: '=',
-      model: '=value'
+      field: '='
+    , model: '=value'
+    , fieldForm: '=form'
     }
   , controller: function($scope) {
     var self = this;
@@ -300,12 +301,44 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
   };
 });
 
+ngModule.directive('appformFieldNumber', function($templateCache, $window, $document, $timeout, mediator) {
+ return {
+   restrict: 'E'
+ , template: $templateCache.get('wfm-template/appform-field-number.tpl.html')
+ , link: function (scope, element, attrs, ctrl) {
+     var input = element.find('input');
+     $timeout(function() {
+       var digits = Math.max(scope.field.props.fieldOptions.validation.max.toString().length, scope.field.props.fieldOptions.validation.min.toString().length);
+       if (digits) {
+         digits = digits + 6;
+         element.find('input').css('width', digits + 'ex');
+       }
+     });
+   }
+ , scope: {
+     field: '=',
+     model: '=value',
+     fieldForm: '=form'
+   }
+   , controller: function($scope) {
+     var self = this;
+     self.field = $scope.field;
+     self.model = $scope.model;
+     if (self.field.props.fieldOptions.definition && self.field.props.fieldOptions.definition.defaultValue) {
+       self.model = parseFloat(self.field.props.fieldOptions.definition.defaultValue);
+     };
+   }
+ , controllerAs: 'ctrl'
+ };
+});
+
 ngModule.directive('appformFieldSignature', function($templateCache, $window, $document, $injector, mediator) {
   return {
     restrict: 'E'
   , template: '<canvas></canvas>'
   , scope: {
       options: '='
+    , fieldForm: '=form'
     }
   , link: function (scope, element, attrs) {
       var options = scope.options || {};
