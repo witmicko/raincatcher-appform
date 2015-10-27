@@ -303,7 +303,7 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
 ngModule.directive('appformFieldSignature', function($templateCache, $window, $document, $injector, mediator) {
   return {
     restrict: 'E'
-  , template: '<div class="appform-signature-field" style="display: flex; flex-grow: 1;"><canvas></canvas></div>'
+  , template: '<canvas></canvas>'
   , scope: {
       options: '='
     }

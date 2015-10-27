@@ -1,28 +1,30 @@
-<label>{{field.props.name}}</label>
+<p class="md-caption">{{field.props.name}}</p>
 <p>{{field.props.helpText}}</p>
-<div layout="row">
-  <div>
-    <md-button type="button" ng-click="ctrl.setLocation()" class="md-icon-button md-raised md-primary"><md-icon md-font-set="material-icons">location_searching</md-icon></md-button>
-  </div>
-  <md-input-container class="{{field.props.fieldCode}} appform-field-location" flex="40">
+  <md-button ng-click="ctrl.setLocation()" class="md-raised md-primary">
+    <md-icon md-font-set="material-icons">location_searching</md-icon>
+    Get Location
+  </md-button>
+
+  <div layout layout="column">
+  <md-input-container class="{{field.props.fieldCode}} appform-field-location" flex>
     <input type="number"
       placeholder="Latitude"
       name="inputNameX"
       ng-model="ctrl.model.lat"
       ng-required="ctrl.field.props.required"
-      style="width: 90%;"
     ></input>
+    
     <div ng-messages="fieldForm.inputNameX.$error" ng-show="ctrl.submitted || fieldForm.inputName.$dirty">
       <div ng-message="required">A {{field.props.name}} latitude is required.</div>
     </div>
   </md-input-container>
-  <md-input-container class="{{field.props.fieldCode}} appform-field-location" flex="40">
+  
+  <md-input-container class="{{field.props.fieldCode}} appform-field-location" flex>
     <input type="number"
       placeholder="Longitude"
       name="inputNameY"
       ng-model="ctrl.model.long"
       ng-required="ctrl.field.props.required"
-      style="width: 90%;"
     ></input>
     <div ng-messages="fieldForm.inputNameY.$error" ng-show="ctrl.submitted || fieldForm.inputName.$dirty">
       <div ng-message="required">A {{field.props.name}} longitude is required.</div>

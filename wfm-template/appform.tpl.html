@@ -1,6 +1,19 @@
+
+<div class="app-form" layout-padding layout-margin>
+
 <form name="workorderForm" ng-submit="ctrl.done(workorderForm.$valid)" novalidate>
   <div ng-repeat="field in ctrl.fields">
     <appform-field field="field" value="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>
   </div>
-  <md-button type="submit" class="md-raised md-primary" ng-disabled="workorderForm.$invalid">Submit</md-button>
+  
+ <md-button type="submit" class="md-raised md-primary" ng-disabled="workorderForm.$invalid">Submit</md-button>
+
+
+    <div class="workflow-actions md-padding md-whiteframe-z4">
+      <md-button class="md-primary md-hue-1">Back</md-button>
+      <md-button class="md-primary">Continue</md-button>
+    </div><!-- workflow-actions-->
+
 </form>
+
+</div><!-- app-form -->
