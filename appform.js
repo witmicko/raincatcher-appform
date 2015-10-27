@@ -146,6 +146,7 @@ ngModule.directive('appform', function($templateCache, $q, mediator) {
       form: '=form'
     }
   , controller: function($scope) {
+    $scope.submitted = false;
     var self = this;
     var form = $scope.form;
     self.fields = form.fields;
@@ -216,7 +217,8 @@ ngModule.directive('appformField', function($templateCache, $timeout, mediator) 
   , template: $templateCache.get('wfm-template/appform-field.tpl.html')
   , scope: {
       field: '=',
-      model: '=value'
+      model: '=value',
+      submitted: '='
     }
   , link: function (scope, element, attrs, ctrl) {
       var parentForm = element.parent();
@@ -275,6 +277,7 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
       field: '='
     , model: '=value'
     , fieldForm: '=form'
+    , submitted: '='
     }
   , controller: function($scope) {
     var self = this;
