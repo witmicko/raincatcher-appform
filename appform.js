@@ -146,7 +146,6 @@ ngModule.directive('appform', function($templateCache, $q, mediator) {
       form: '=form'
     }
   , controller: function($scope) {
-    $scope.submitted = false;
     var self = this;
     var form = $scope.form;
     self.fields = form.fields;
@@ -155,9 +154,8 @@ ngModule.directive('appform', function($templateCache, $q, mediator) {
       self.model[field.props.fieldCode || field.props._id] = {};
     });
     self.done = function(isValid) {
-      $scope.submitted = true;
+      $scope.$broadcast('parentFormSubmitted');
       if (isValid) {
-        $scope.$broadcast('parentFormSubmitted');
         // console.log('Form model', self.model);
         var submission = form.newSubmission();
         var qs = [];
@@ -217,8 +215,7 @@ ngModule.directive('appformField', function($templateCache, $timeout, mediator) 
   , template: $templateCache.get('wfm-template/appform-field.tpl.html')
   , scope: {
       field: '=',
-      model: '=value',
-      submitted: '='
+      model: '=value'
     }
   , link: function (scope, element, attrs, ctrl) {
       var parentForm = element.parent();
@@ -265,8 +262,6 @@ ngModule.directive('appformFieldLocation', function($templateCache, $timeout, me
   , scope: {
       field: '='
     , model: '=value'
-    , fieldForm: '=form'
-    , submitted: '='
     }
   , controller: function($scope) {
     var self = this;
@@ -300,7 +295,6 @@ ngModule.directive('appformFieldNumber', function($templateCache, $window, $docu
  , scope: {
    field: '=',
    model: '=value',
-   fieldForm: '=form'
  }
  , controller: function($scope) {
    var self = this;
@@ -320,7 +314,6 @@ ngModule.directive('appformFieldSignature', function($templateCache, $window, $d
   , template: '<canvas></canvas>'
   , scope: {
       options: '='
-    , fieldForm: '=form'
     }
   , link: function (scope, element, attrs) {
       var options = scope.options || {};

@@ -8,8 +8,9 @@
     max="{{field.props.fieldOptions.validation.max}}"
     ng-required="ctrl.field.props.required"
   ></input>
-  <div ng-messages="fieldForm.inputName.$error" ng-show="ctrl.submitted || fieldForm.inputName.$dirty">
+  <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">
     <div ng-message="required">A {{field.props.name}} is required.</div>
+    <div ng-message="number">You did not enter a valid number</div>
     <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>
     <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>
   </div>

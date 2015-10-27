@@ -2,14 +2,14 @@
   <div ng-switch="ctrl.field.props.type">
 
     <div ng-switch-when="number">
-      <appform-field-number value="ctrl.model" field="ctrl.field" form="fieldForm"></appform-field-number>
+      <appform-field-number value="ctrl.model" field="ctrl.field"></appform-field-number>
     </div>
 
     <div ng-switch-when="location">
-      <appform-field-location value="ctrl.model" field="ctrl.field" form="fieldForm" submitted="submitted"></appform-field-location>
+      <appform-field-location value="ctrl.model" field="ctrl.field"></appform-field-location>
     </div>
 
-    <div ng-switch-when="signature" flex class="appform-signature" form="fieldForm">
+    <div ng-switch-when="signature" flex class="appform-signature">
       <md-input-container>
         <p class="md-caption">{{ctrl.field.props.name}}</p>
         <appform-field-signature></appform-field-signature>
@@ -26,7 +26,7 @@
           ng-model="ctrl.model"
           ng-required="ctrl.field.props.required"
         ></input>
-        <div ng-messages="fieldForm.inputName.$error" ng-show="submitted || fieldForm.inputName.$dirty">
+        <div ng-messages="fieldForm.inputName.$error" ng-show="fieldForm.inputName.$dirty || fieldForm.$submitted">
           <div ng-message="required">A {{ctrl.field.props.name}} is required.</div>
         </div>
       </md-input-container>

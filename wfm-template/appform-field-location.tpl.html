@@ -13,8 +13,8 @@
       ng-model="ctrl.model.lat"
       ng-required="ctrl.field.props.required"
     ></input>
-    
-    <div ng-messages="fieldForm.inputNameX.$error" ng-show="submitted || fieldForm.inputName.$dirty">
+
+    <div ng-messages="$parent.fieldForm.inputNameX.$error" ng-show="$parent.fieldForm.inputNameX.$dirty || $parent.fieldForm.$submitted">
       <div ng-message="required">A {{field.props.name}} latitude is required.</div>
     </div>
   </md-input-container>
@@ -26,7 +26,7 @@
       ng-model="ctrl.model.long"
       ng-required="ctrl.field.props.required"
     ></input>
-    <div ng-messages="fieldForm.inputNameY.$error" ng-show="submitted || fieldForm.inputName.$dirty">
+    <div ng-messages="$parent.fieldForm.inputNameY.$error" ng-show="$parent.fieldForm.inputNameY.$dirty || $parent.fieldForm.$submitted">
       <div ng-message="required">A {{field.props.name}} longitude is required.</div>
     </div>
   </md-input-container>
