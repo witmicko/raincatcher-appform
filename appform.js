@@ -30,10 +30,11 @@ ngModule.run(function($q, mediator) {
       $fh.forms.getForms(function(err, formsModel) {
         if (err) {
           console.error(err);
+          mediator.publish('error:wfm:appform:forms:load', forms);
           return;
         }
         var forms = formsModel.props.forms;
-        mediator.publish('wfm:appform:forms:loaded', forms);
+        mediator.publish('done:wfm:appform:forms:load', forms);
       });
     });
   });
@@ -46,7 +47,7 @@ ngModule.run(function($q, mediator) {
           return;
         }
         console.log('Retrieved form.', form);
-        mediator.publish('wfm:appform:form:loaded', form);
+        mediator.publish('done:wfm:appform:form:load:' + formId, form);
       });
     });
   });
@@ -57,9 +58,10 @@ ngModule.run(function($q, mediator) {
         submissions.getSubmissionByMeta({_ludid: submissionLocalId}, function(err, submission) {
           if (err) {
             console.log(submissionLocalId, err);
+            mediator.publish('error:wfm:appform:submission:local:load:'+submissionId, err);
             return;
           }
-          mediator.publish('wfm:appform:submission:local:loaded', submission);
+          mediator.publish('done:wfm:appform:submission:local:'+submissionLocalId, submission);
         });
       });
     });
@@ -70,9 +72,10 @@ ngModule.run(function($q, mediator) {
       $fh.forms.downloadSubmission({submissionId}, function(err, submission) {
         if (err) {
           console.log(submissionId, err);
+          mediator.publish('error:wfm:appform:submission:load:'+submissionId, err);
           return;
         }
-        mediator.publish('wfm:appform:submission:'+submissionId+':loaded', submission);
+        mediator.publish('done:wfm:appform:submission:load:'+submissionId, submission);
       });
     });
   });
@@ -82,6 +85,7 @@ ngModule.run(function($q, mediator) {
       submission.getForm(function(err, form) {
         if (err) {
           console.error(err);
+          mediator.publish('error:wfm:appform:submission:fields:load:'+submissionId, err);
           return;
         }
         var fields = form.fields;
@@ -99,7 +103,7 @@ ngModule.run(function($q, mediator) {
           });
         });
         $q.all(qs).then(function() {
-          mediator.publish('wfm:appform:submission:fields:'+submission.getLocalId()+':loaded', fields);
+          mediator.publish('done:wfm:appform:submission:fields:load:'+submission.getLocalId(), fields);
         });
       });
     });
@@ -116,21 +120,20 @@ ngModule.directive('appformSubmission', function($templateCache, $q, mediator) {
     }
   , controller: function($scope) {
       var self = this;
-      var promise;
+      var submissionPromise;
       if ($scope.submissionLocalId) {
-        mediator.publish('wfm:appform:submission:local:load', $scope.submissionLocalId);
-        promise = mediator.promise('wfm:appform:submission:local:loaded');
+        submissionPromise = mediator.request('wfm:appform:submission:local:load', $scope.submissionLocalId);
       } else if ($scope.submissionId) {
-        mediator.publish('wfm:appform:submission:load', $scope.submissionId);
-        promise = mediator.promise('wfm:appform:submission:'+$scope.submissionId+':loaded');
+        submissionPromise = mediator.request('wfm:appform:submission:load', $scope.submissionId);
       } else {
         console.error('appformSubmission called with no submission');
       }
-      promise.then(function(submission) {
+      submissionPromise.then(function(submission) {
         self.form = submission.form;
-        mediator.publish('wfm:appform:submission:fields:load', submission);
-        mediator.once('wfm:appform:submission:fields:'+submission.getLocalId()+':loaded', function(fields) {
+        mediator.request('wfm:appform:submission:fields:load', submission, {uid: submission.getLocalId()}).then(function(fields) {
           self.fields = fields;
+        }, function(error) {
+          console.error(error);
         });
       });
     }
