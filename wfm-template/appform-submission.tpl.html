@@ -1,83 +1,58 @@
-
-  <!--   <md-subheader>{{ctrl.form.props.name}}</md-subheader> -->
-
-<md-subheader>Suheader</md-subheader>
+<md-subheader>{{ctrl.form.props.name}}</md-subheader>
 
 <md-list class="appform-view">
-
 
   <md-list-item ng-if="! ctrl.fields" class="loading">
     Loading appForm submission...
   </md-list-item>
 
-
-  <md-list-item class="md-2-line with-image">
-    <md-icon md-font-set="material-icons">gesture</md-icon>
-    <div class="md-list-item-text">
-      <h3><img src="http://placehold.it/350x150"></h3>
-      <p>Risk Assessment signature</p>
-    </div>
-    <md-divider></md-divider>
-  </md-list-item>
-
-
-  <md-list-item class="md-2-line">
-    <md-icon md-font-set="material-icons">text_format</md-icon>
-    <div class="md-list-item-text">
-      <h3>John Doe</h3>
-      <p>Name</p>
-    </div>
-    <md-divider></md-divider>
-  </md-list-item>
-
-
-  <md-list-item class="md-2-line">
-    <md-icon md-font-set="material-icons">filter_4</md-icon>
-    <div class="md-list-item-text">
-      <h3>8252</h3>
-      <p>Number</p>
-    </div>
-    <md-divider></md-divider>
-  </md-list-item>
-
-
-  <md-list-item class="md-3-line">
-    <md-icon md-font-set="material-icons">place</md-icon>
-    <div class="md-list-item-text">
-      <h3>34.9262422, -14.82625252</h3>
-      <p>Longitude, Latitude</p>
-    </div>
-  </md-list-item>
-
-  
-  
-  <md-list-item class="md-2-line" ng-repeat="field in ctrl.fields">
-    
-    <span ng-switch="field.props.type" flex>
-      
+  <div ng-repeat="field in ctrl.fields">
+    <ng-switch on="field.props.type">
       <div ng-switch-when="signature">
-        <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="Signature">
-        <img ng-if="!field.value.localURI" ng-src="{{field.value.imgHeader + field.value.data}}" alt="Signature">
+        <md-list-item class="md-2-line with-image">
+          <md-icon md-font-set="material-icons">gesture</md-icon>
+          <div class="md-list-item-text">
+            <h3>
+              <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="Signature">
+              <img ng-if="!field.value.localURI" ng-src="{{field.value.imgHeader + field.value.data}}" alt="Signature">
+            </h3>
+            <p>{{field.props.name}}</p>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
       </div>
-      
-      <div ng-switch-when="location">
-        <div>{{field.props.name}}:</div>
-        <div style="font-weight: bold">{{field.value.lat}}N {{field.value.long}}W</div>
-      </div>
-      
-      
-      <span ng-switch-default >
-        
-        <md-icon md-font-set="material-icons">gesture</md-icon>
-        <div class="md-list-item-text">
-          <h3>{{field.value}}</h3>
-          <p>{{field.props.name}}</p>
-        </span>
-      
-      </div>
-    
-    </span>
-    
-  </md-list-item>
 
+      <div ng-switch-when="location">
+        <md-list-item class="md-3-line">
+          <md-icon md-font-set="material-icons">place</md-icon>
+          <div class="md-list-item-text">
+            <h3>{{field.value.lat}}N, {{field.value.long}}W</h3>
+            <p>{{field.props.name}}</p>
+          </div>
+        </md-list-item>
+      </div>
+
+      <div ng-switch-when="number">
+        <md-list-item class="md-2-line">
+          <md-icon md-font-set="material-icons">filter_4</md-icon>
+          <div class="md-list-item-text">
+            <h3>{{field.value}}</h3>
+            <p>{{field.props.name}}</p>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </div>
+
+      <div ng-switch-default>
+        <md-list-item class="md-2-line">
+          <md-icon md-font-set="material-icons">text_format</md-icon>
+          <div class="md-list-item-text">
+            <h3>{{field.value}}</h3>
+            <p>{{field.props.name}}</p>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </div>
+    </ng-switch>
+  </div>
 </md-list>
