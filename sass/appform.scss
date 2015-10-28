@@ -15,3 +15,14 @@ appform-field-signature canvas{
   border: 1px solid rgba(0,0,0,.12);
   width: 99%;
 }
+
+
+.with-image {
+  height: auto;
+  p{padding-bottom: 20px;}
+  img {
+    margin-top: 16px;
+    width: 100%;
+    display: inline-block;
+  }
+}
