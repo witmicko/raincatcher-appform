@@ -5,7 +5,14 @@
   "main": "appform.js",
   "scripts": {
     "build": "wfm-template-build -m 'wfm.appform.directives'",
-    "watch": "wfm-template-build -w -m 'wfm.appform.directives'"
+    "watch": "wfm-template-build -w -m 'wfm.appform.directives'",
+    "test-watch": "mochify --watch test/client/**/*.spec.js",
+    "test-debug": "mochify --debug test/client/**/*.spec.js",
+    "test-phantom": "mochify test/client/**/*.spec.js",
+    "test-wd": "mochify --wd test/client/**/*.spec.js",
+    "test-cover": "mochify --cover test/client/**/*.spec.js",
+    "test": "npm run test-phantom && npm run test-wd && npm run test-cover",
+    "test-server": "node test/test-server.js | bunyan"
   },
   "keywords": [
     "wfm",
@@ -14,7 +21,17 @@
   "author": "Brian Leathem",
   "license": "Copyright (c) 2015 FeedHenry Ltd, All Rights Reserved.",
   "devDependencies": {
-    "fh-wfm-template-build": "0.0.1"
+    "async": "^1.5.0",
+    "bunyan": "^1.5.1",
+    "config-chain": "^1.1.9",
+    "cors": "^2.7.1",
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "fh-mbaas-api": "^5.3.5",
+    "fh-wfm-mediator": ">=0.0.7",
+    "fh-wfm-template-build": "0.0.1",
+    "mochify": "^2.14.0",
+    "should": "^7.1.1"
   },
   "dependencies": {
     "fh-wfm-template-build": ">=0.0.3",
