@@ -4,8 +4,8 @@
   "description": "An appform module for WFM",
   "main": "appform.js",
   "scripts": {
-    "build": "wfm-template-build -m 'wfm.appform'",
-    "watch": "wfm-template-build -w -m 'wfm.appform'"
+    "build": "wfm-template-build -m 'wfm.appform.directives'",
+    "watch": "wfm-template-build -w -m 'wfm.appform.directives'"
   },
   "keywords": [
     "wfm",
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "fh-wfm-template-build": ">=0.0.3",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "q": "^1.4.1"
   }
 }

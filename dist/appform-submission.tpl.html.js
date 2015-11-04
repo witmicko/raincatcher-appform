@@ -1,8 +1,8 @@
 var ngModule;
 try {
-  ngModule = angular.module('wfm.appform');
+  ngModule = angular.module('wfm.appform.directives');
 } catch (e) {
-  ngModule = angular.module('wfm.appform', []);
+  ngModule = angular.module('wfm.appform.directives', []);
 }
 
 ngModule.run(['$templateCache', function ($templateCache) {
