@@ -17,6 +17,7 @@
     "fh-wfm-template-build": "0.0.1"
   },
   "dependencies": {
+    "fh-wfm-template-build": ">=0.0.3",
     "lodash": "^3.10.1"
   }
 }
