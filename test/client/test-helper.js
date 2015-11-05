@@ -17,4 +17,23 @@ testHelper.stopLoggingNotifications = function(mediator) {
   console.log('Stopped listnering for events on topic:', topic);
 }
 
+testHelper.overrideNavigator = function() {
+  // Overide window.navigator.onLine to make sync work
+  if (! navigator.oldNavigator) {
+    var fakeNavigator = {};
+    for (var i in navigator) {
+      fakeNavigator[i] = navigator[i];
+    }
+    fakeNavigator.onLine = true;
+    fakeNavigator.oldNavigator = navigator;
+    navigator = fakeNavigator;
+  }
+}
+
+testHelper.restoreNavigator = function() {
+  if (navigator.oldNavigator) {
+    navigator = navigator.oldNavigator;
+  }
+}
+
 module.exports = testHelper;
