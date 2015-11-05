@@ -29,10 +29,9 @@ describe('Test appforms', function() {
     'true'.should.be.equal('true');
   });
 
-  it.skip('list works', function() {
+  it('list works', function() {
     return client.list()
     .then(function(forms) {
-      console.log(forms);
       forms.should.not.be.empty();
     }, function(error) {
       throw error;
@@ -40,6 +39,7 @@ describe('Test appforms', function() {
   });
 
   it('creating a submission works', function() {
+    this.timeout(15000);
     var submissionFields = [
       {fieldId: '56158387bc36069871b33bef', value: 'John'},
       {fieldId: '56158387bc36069871b33bf0', value: 'Doe'},
@@ -47,12 +47,12 @@ describe('Test appforms', function() {
     ];
     return client.getForm('561582e5e375d65e34dd5d8e')
     .then(function(form) {
-      console.log('form', form);
       should.exist(form);
+      form.props._id.should.equal('561582e5e375d65e34dd5d8e');
       return client.createSubmission(form, submissionFields);
     })
     .then(function(submissionResults) {
-      console.log(submissionResults);
+      submissionResults.formId.should.equal('561582e5e375d65e34dd5d8e');
     });
   });
 });
