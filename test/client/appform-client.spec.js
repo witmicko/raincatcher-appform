@@ -91,6 +91,8 @@ describe('Test appforms', function() {
     .then(client.uploadSubmission)
     .then(function(submissionResults) {
       submissionResults.formId.should.equal('561582e5e375d65e34dd5d8e');
+      submissionResults._submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+      submissionResults._submission.props.status.should.equal('submitted');
       return client.getSubmissionLocal(submissionResults._submissionLocalId);
     })
     .then(function(submission) {
