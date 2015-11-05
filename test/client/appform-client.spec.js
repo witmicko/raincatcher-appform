@@ -51,6 +51,8 @@ describe('Test appforms', function() {
       return client.createSubmission(form, submissionFields);
     })
     .then(function(submission) {
+      should.exist(submission);
+      should.exist(submission.getLocalId());
       submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
     });
   });
