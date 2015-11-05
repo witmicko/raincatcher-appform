@@ -93,16 +93,24 @@ describe('Test appforms', function() {
       return mediator.request('appform:submission:create', [form, submissionFields, 3], {uid: 3});
     })
     .then(function(submission) {
+      should.exist(submission.props._ludid);
+      should.exist(submission.getLocalId());
       return mediator.request('appform:submission:submit', submission, {uid: submission.getLocalId()});
     })
     .then(function(submission) {
+      should.exist(submission.props._ludid);
+      should.exist(submission.getLocalId());
       return mediator.request('appform:submission:upload', submission, {uid: submission.getLocalId(), timeout: 5000});
     })
-    .then(function(submissionResults) {
-      submissionResults.formId.should.equal('561582e5e375d65e34dd5d8e');
-      submissionResults._submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
-      submissionResults._submission.props.status.should.equal('submitted');
-      return mediator.request('appform:submission:local:load', submissionResults._submissionLocalId);
+    .then(function(submission) {
+      should.exist(submission);
+      should.exist(submission.props._ludid);
+      should.exist(submission.props._id);
+      should.exist(submission.props.formId)
+
+      submission.props.status.should.equal('submitted');
+      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+      return mediator.request('appform:submission:local:load', submission.props._ludid);
     })
     .then(function(submission) {
       submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');

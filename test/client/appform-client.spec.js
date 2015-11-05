@@ -52,7 +52,11 @@ describe('Test appforms', function() {
     })
     .then(function(submission) {
       should.exist(submission);
-      should.exist(submission.getLocalId());
+      should.exist(submission.props._ludid);
+      should.not.exist(submission.props._id);
+      should.exist(submission.props.formId);
+
+      submission.props.status.should.equal('new');
       submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
     });
   });
@@ -71,8 +75,13 @@ describe('Test appforms', function() {
     })
     .then(client.submitSubmission)
     .then(function(submission) {
-      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+      should.exist(submission);
+      should.exist(submission.props._ludid);
+      should.not.exist(submission.props._id);
+      should.exist(submission.props.formId);
+
       submission.props.status.should.equal('pending');
+      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
     });
   });
 
@@ -91,11 +100,16 @@ describe('Test appforms', function() {
     })
     .then(client.submitSubmission)
     .then(client.uploadSubmission)
-    .then(function(submissionResults) {
-      submissionResults.formId.should.equal('561582e5e375d65e34dd5d8e');
-      submissionResults._submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
-      submissionResults._submission.props.status.should.equal('submitted');
-      return client.getSubmissionLocal(submissionResults._submissionLocalId);
+    .then(function(submission) {
+      should.exist(submission);
+      should.exist(submission.props._ludid);
+      should.exist(submission.props._id);
+      should.exist(submission.props.formId);
+
+      submission.props.status.should.equal('submitted');
+      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+
+      return client.getSubmissionLocal(submission.props._ludid);
     })
     .then(function(submission) {
       submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');

@@ -9,7 +9,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field-location.tpl.html',
     '<p class="md-caption">{{field.props.name}}</p>\n' +
     '<p>{{field.props.helpText}}</p>\n' +
-    '  <md-button ng-click="ctrl.setLocation()" class="md-raised md-primary">\n' +
+    '  <md-button type="button" ng-click="ctrl.setLocation()" class="md-raised md-primary">\n' +
     '    <md-icon md-font-set="material-icons">location_searching</md-icon>\n' +
     '    Get Location\n' +
     '  </md-button>\n' +
