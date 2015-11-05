@@ -39,6 +39,42 @@ describe('Test appforms', function() {
   });
 
   it('creating a submission works', function() {
+    var submissionFields = [
+      {fieldId: '56158387bc36069871b33bef', value: 'John'},
+      {fieldId: '56158387bc36069871b33bf0', value: 'Doe'},
+      {fieldId: '56158387bc36069871b33bf1', value: '123 A St.'}
+    ];
+    return client.getForm('561582e5e375d65e34dd5d8e')
+    .then(function(form) {
+      should.exist(form);
+      form.props._id.should.equal('561582e5e375d65e34dd5d8e');
+      return client.createSubmission(form, submissionFields);
+    })
+    .then(function(submission) {
+      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+    });
+  });
+
+  it('submitting a submission works', function() {
+    var submissionFields = [
+      {fieldId: '56158387bc36069871b33bef', value: 'John'},
+      {fieldId: '56158387bc36069871b33bf0', value: 'Doe'},
+      {fieldId: '56158387bc36069871b33bf1', value: '123 A St.'}
+    ];
+    return client.getForm('561582e5e375d65e34dd5d8e')
+    .then(function(form) {
+      should.exist(form);
+      form.props._id.should.equal('561582e5e375d65e34dd5d8e');
+      return client.createSubmission(form, submissionFields);
+    })
+    .then(client.submitSubmission)
+    .then(function(submission) {
+      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+      submission.props.status.should.equal('pending');
+    });
+  });
+
+  it('uploading a submission works', function() {
     this.timeout(15000);
     var submissionFields = [
       {fieldId: '56158387bc36069871b33bef', value: 'John'},
@@ -51,8 +87,15 @@ describe('Test appforms', function() {
       form.props._id.should.equal('561582e5e375d65e34dd5d8e');
       return client.createSubmission(form, submissionFields);
     })
+    .then(client.submitSubmission)
+    .then(client.uploadSubmission)
     .then(function(submissionResults) {
       submissionResults.formId.should.equal('561582e5e375d65e34dd5d8e');
+      return client.getSubmissionLocal(submissionResults._submissionLocalId);
+    })
+    .then(function(submission) {
+      submission.props.formId.should.equal('561582e5e375d65e34dd5d8e');
+      submission.props.status.should.equal('submitted');
     });
   });
 });
