@@ -102,6 +102,9 @@ describe('Test appforms', function() {
       should.exist(submission.getLocalId());
       return mediator.request('appform:submission:upload', submission, {uid: submission.getLocalId(), timeout: 5000});
     })
+    .then(function(submissionId) {
+      return mediator.request('appform:submission:remote:load', submissionId);
+    })
     .then(function(submission) {
       should.exist(submission);
       should.exist(submission.props._ludid);

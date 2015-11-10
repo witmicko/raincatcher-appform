@@ -100,6 +100,7 @@ describe('Test appforms', function() {
     })
     .then(client.submitSubmission)
     .then(client.uploadSubmission)
+    .then(client.getSubmission)
     .then(function(submission) {
       should.exist(submission);
       should.exist(submission.props._ludid);
