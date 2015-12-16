@@ -13,8 +13,8 @@
           <md-icon md-font-set="material-icons">gesture</md-icon>
           <div class="md-list-item-text">
             <h3>
-              <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="Signature">
-              <img ng-if="!field.value.localURI" ng-src="{{field.value.imgHeader + field.value.data}}" alt="Signature">
+              <signature ng-if="field.value.localURI" value="field.value.localURI" alt="Signature"></signature>
+              <signature ng-if="!field.value.localURI" value="field.value.imgHeader + field.value.data" alt="Signature"></signature>
             </h3>
             <p>{{field.props.name}}</p>
           </div>

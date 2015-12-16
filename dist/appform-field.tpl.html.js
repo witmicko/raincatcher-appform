@@ -21,7 +21,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '    <div ng-switch-when="signature" flex class="appform-signature">\n' +
     '      <md-input-container>\n' +
     '        <p class="md-caption">{{ctrl.field.props.name}}</p>\n' +
-    '        <appform-field-signature></appform-field-signature>\n' +
+    '        <signature-form value="ctrl.model"></signature-form>\n' +
     '      </md-input-container>\n' +
     '    </div>\n' +
     '\n' +

@@ -22,8 +22,8 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '          <md-icon md-font-set="material-icons">gesture</md-icon>\n' +
     '          <div class="md-list-item-text">\n' +
     '            <h3>\n' +
-    '              <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="Signature">\n' +
-    '              <img ng-if="!field.value.localURI" ng-src="{{field.value.imgHeader + field.value.data}}" alt="Signature">\n' +
+    '              <signature ng-if="field.value.localURI" value="field.value.localURI" alt="Signature"></signature>\n' +
+    '              <signature ng-if="!field.value.localURI" value="field.value.imgHeader + field.value.data" alt="Signature"></signature>\n' +
     '            </h3>\n' +
     '            <p>{{field.props.name}}</p>\n' +
     '          </div>\n' +
