@@ -29,7 +29,6 @@
     "express": "^4.13.3",
     "fh-mbaas-api": "^5.3.5",
     "fh-wfm-mediator": ">=0.0.7",
-    "fh-wfm-template-build": "0.0.3",
     "mochify": "^2.14.0",
     "should": "^7.1.1"
   },
