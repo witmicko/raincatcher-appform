@@ -33,7 +33,7 @@
     "should": "^7.1.1"
   },
   "dependencies": {
-    "fh-wfm-component-signature": "0.0.3",
+    "fh-wfm-component-signature": "0.0.4",
     "fh-wfm-template-build": ">=0.0.3",
     "lodash": "^3.10.1",
     "q": "^1.4.1"
