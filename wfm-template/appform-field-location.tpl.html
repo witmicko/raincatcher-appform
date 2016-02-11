@@ -1,6 +1,6 @@
 <p class="md-caption">{{field.props.name}}</p>
 <p>{{field.props.helpText}}</p>
-  <md-button type="button" ng-click="ctrl.setLocation()" class="md-raised md-primary">
+  <md-button type="button" ng-click="ctrl.setLocation($event)" class="md-raised md-primary">
     <md-icon md-font-set="material-icons">location_searching</md-icon>
     Get Location
   </md-button>
@@ -10,7 +10,7 @@
     <input type="number"
       placeholder="Latitude"
       name="inputNameX"
-      ng-model="ctrl.model.lat"
+      ng-model="ctrl.model.value.lat"
       ng-required="ctrl.field.props.required"
     ></input>
 
@@ -23,7 +23,7 @@
     <input type="number"
       placeholder="Longitude"
       name="inputNameY"
-      ng-model="ctrl.model.long"
+      ng-model="ctrl.model.value.long"
       ng-required="ctrl.field.props.required"
     ></input>
     <div ng-messages="$parent.fieldForm.inputNameY.$error" ng-show="$parent.fieldForm.inputNameY.$dirty || $parent.fieldForm.$submitted">

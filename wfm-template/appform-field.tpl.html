@@ -2,17 +2,17 @@
   <div ng-switch="ctrl.field.props.type">
 
     <div ng-switch-when="number">
-      <appform-field-number value="ctrl.model" field="ctrl.field"></appform-field-number>
+      <appform-field-number model="ctrl.model" field="ctrl.field"></appform-field-number>
     </div>
 
     <div ng-switch-when="location">
-      <appform-field-location value="ctrl.model" field="ctrl.field"></appform-field-location>
+      <appform-field-location model="ctrl.model" field="ctrl.field"></appform-field-location>
     </div>
 
     <div ng-switch-when="signature" flex class="appform-signature">
       <md-input-container>
         <p class="md-caption">{{ctrl.field.props.name}}</p>
-        <signature-form value="ctrl.model"></signature-form>
+        <signature-form value="ctrl.model.value"></signature-form>
       </md-input-container>
     </div>
 
@@ -23,7 +23,7 @@
           type="text"
           placeholder="{{ctrl.field.props.helpText}}"
           name="inputName"
-          ng-model="ctrl.model"
+          ng-model="ctrl.model.value"
           ng-required="ctrl.field.props.required"
         ></input>
         <div ng-messages="fieldForm.inputName.$error" ng-show="fieldForm.inputName.$dirty || fieldForm.$submitted">

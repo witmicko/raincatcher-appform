@@ -2,7 +2,7 @@
 
 <form name="workorderForm" novalidate>
   <div ng-repeat="field in ctrl.fields">
-    <appform-field field="field" value="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>
+    <appform-field field="field" model="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>
   </div>
 
   <div class="workflow-actions md-padding md-whiteframe-z4">

@@ -11,7 +11,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '\n' +
     '<form name="workorderForm" novalidate>\n' +
     '  <div ng-repeat="field in ctrl.fields">\n' +
-    '    <appform-field field="field" value="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>\n' +
+    '    <appform-field field="field" model="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>\n' +
     '  </div>\n' +
     '\n' +
     '  <div class="workflow-actions md-padding md-whiteframe-z4">\n' +

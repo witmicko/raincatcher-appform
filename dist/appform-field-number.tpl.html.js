@@ -12,7 +12,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '  <input type="number"\n' +
     '    placeholder="{{ctrl.field.props.helpText}}"\n' +
     '    name="inputName"\n' +
-    '    ng-model="ctrl.model"\n' +
+    '    ng-model="ctrl.model.value"\n' +
     '    min="{{field.props.fieldOptions.validation.min}}"\n' +
     '    max="{{field.props.fieldOptions.validation.max}}"\n' +
     '    ng-required="ctrl.field.props.required"\n' +
