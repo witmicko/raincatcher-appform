@@ -15,7 +15,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '  </div>\n' +
     '\n' +
     '  <div class="workflow-actions md-padding md-whiteframe-z4">\n' +
-    '    <md-button class="md-primary md-hue-1">Back</md-button>\n' +
+    '    <md-button class="md-primary md-hue-1" ng-click="ctrl.back($event)">Back</md-button>\n' +
     '    <md-button type="button" ng-click="ctrl.done($event, workorderForm.$valid)" class="md-primary">Continue</md-button>\n' +
     '  </div><!-- workflow-actions-->\n' +
     '\n' +
