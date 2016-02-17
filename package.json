@@ -19,7 +19,7 @@
     "appform"
   ],
   "author": "Brian Leathem",
-  "license": "Copyright (c) 2015 FeedHenry Ltd, All Rights Reserved.",
+  "license": "SEE LICENSE IN LICENSE.txt",
   "devDependencies": {
     "async": "^1.5.0",
     "bunyan": "^1.5.1",
