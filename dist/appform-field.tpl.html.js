@@ -1,8 +1,3 @@
-/**
-* CONFIDENTIAL
-* Copyright 2016 Red Hat, Inc. and/or its affiliates.
-* This is unpublished proprietary source code of Red Hat.
-**/
 var ngModule;
 try {
   ngModule = angular.module('wfm.appform.directives');
@@ -12,6 +7,11 @@ try {
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field.tpl.html',
+    '<!--\n' +
+    ' CONFIDENTIAL\n' +
+    ' Copyright 2016 Red Hat, Inc. and/or its affiliates.\n' +
+    ' This is unpublished proprietary source code of Red Hat.\n' +
+    '-->\n' +
     '<ng-form name="fieldForm" ng-submit="ctrl.submit()">\n' +
     '  <div ng-switch="ctrl.field.props.type">\n' +
     '\n' +
@@ -24,14 +24,14 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '    </div>\n' +
     '\n' +
     '    <div ng-switch-when="signature" flex class="appform-signature">\n' +
-    '      <md-input-container>\n' +
+    '      <md-input-container class="md-block">\n' +
     '        <p class="md-caption">{{ctrl.field.props.name}}</p>\n' +
     '        <signature-form value="ctrl.model.value"></signature-form>\n' +
     '      </md-input-container>\n' +
     '    </div>\n' +
     '\n' +
     '    <div ng-switch-default flex>\n' +
-    '      <md-input-container>\n' +
+    '      <md-input-container class="md-block">\n' +
     '        <label>{{ctrl.field.props.name}}</label>\n' +
     '        <input\n' +
     '          type="text"\n' +

@@ -1,8 +1,3 @@
-/**
-* CONFIDENTIAL
-* Copyright 2016 Red Hat, Inc. and/or its affiliates.
-* This is unpublished proprietary source code of Red Hat.
-**/
 var ngModule;
 try {
   ngModule = angular.module('wfm.appform.directives');
@@ -12,7 +7,12 @@ try {
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform.tpl.html',
-    '<div class="app-form" layout-padding layout-margin>\n' +
+    '<!--\n' +
+    ' CONFIDENTIAL\n' +
+    ' Copyright 2016 Red Hat, Inc. and/or its affiliates.\n' +
+    ' This is unpublished proprietary source code of Red Hat.\n' +
+    '-->\n' +
+    '<div class="app-form" layout-padding >\n' +
     '\n' +
     '<form name="workorderForm" novalidate>\n' +
     '  <div ng-repeat="field in ctrl.fields">\n' +

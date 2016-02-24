@@ -1,8 +1,3 @@
-/**
-* CONFIDENTIAL
-* Copyright 2016 Red Hat, Inc. and/or its affiliates.
-* This is unpublished proprietary source code of Red Hat.
-**/
 var ngModule;
 try {
   ngModule = angular.module('wfm.appform.directives');
@@ -12,6 +7,11 @@ try {
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field-location.tpl.html',
+    '<!--\n' +
+    ' CONFIDENTIAL\n' +
+    ' Copyright 2016 Red Hat, Inc. and/or its affiliates.\n' +
+    ' This is unpublished proprietary source code of Red Hat.\n' +
+    '-->\n' +
     '<p class="md-caption">{{field.props.name}}</p>\n' +
     '<p>{{field.props.helpText}}</p>\n' +
     '  <md-button type="button" ng-click="ctrl.setLocation($event)" class="md-raised md-primary">\n' +
@@ -19,8 +19,8 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '    Get Location\n' +
     '  </md-button>\n' +
     '\n' +
-    '  <div layout layout="column">\n' +
-    '  <md-input-container class="{{field.props.fieldCode}} appform-field-location" flex>\n' +
+    '  <div layout="row">\n' +
+    '  <md-input-container class="{{field.props.fieldCode}} appform-field-location md-block" flex>\n' +
     '    <input type="number"\n' +
     '      placeholder="Latitude"\n' +
     '      name="inputNameX"\n' +
@@ -33,7 +33,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '    </div>\n' +
     '  </md-input-container>\n' +
     '\n' +
-    '  <md-input-container class="{{field.props.fieldCode}} appform-field-location" flex>\n' +
+    '  <md-input-container class="{{field.props.fieldCode}} appform-field-location md-block" flex>\n' +
     '    <input type="number"\n' +
     '      placeholder="Longitude"\n' +
     '      name="inputNameY"\n' +
