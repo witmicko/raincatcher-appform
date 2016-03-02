@@ -12,6 +12,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     ' Copyright 2016 Red Hat, Inc. and/or its affiliates.\n' +
     ' This is unpublished proprietary source code of Red Hat.\n' +
     '-->\n' +
+    '\n' +
     '<md-subheader>{{ctrl.form.props.name}}</md-subheader>\n' +
     '\n' +
     '<md-list class="appform-view">\n' +
