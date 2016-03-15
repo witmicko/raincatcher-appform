@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "fh-wfm-component-signature": "0.0.5",
-    "fh-wfm-template-build": ">=0.0.3",
+    "fh-wfm-template-build": "0.0.4",
     "lodash": "^3.10.1",
     "q": "^1.4.1"
   }
