@@ -2,7 +2,7 @@
   "name": "fh-wfm-appform",
   "version": "0.0.9",
   "description": "An appform module for WFM",
-  "main": "appform.js",
+  "main": "lib/angular/appform-ng.js",
   "scripts": {
     "build": "wfm-template-build -m 'wfm.appform.directives'",
     "watch": "wfm-template-build -w -m 'wfm.appform.directives'",
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "fh-wfm-component-signature": "0.0.5",
-    "fh-wfm-template-build": "0.0.4",
-    "lodash": "^3.10.1",
+    "fh-wfm-template-build": "0.0.5",
+    "lodash": "^4.7.0",
     "q": "^1.4.1"
   }
 }
