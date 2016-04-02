@@ -21,21 +21,21 @@
   "author": "Brian Leathem",
   "license": "SEE LICENSE IN LICENSE.txt",
   "devDependencies": {
-    "async": "^1.5.0",
-    "bunyan": "^1.5.1",
-    "config-chain": "^1.1.9",
-    "cors": "^2.7.1",
-    "dotenv": "^1.2.0",
-    "express": "^4.13.3",
-    "fh-mbaas-api": "^5.5.6",
-    "fh-wfm-mediator": ">=0.0.7",
-    "mochify": "^2.17.0",
-    "should": "^7.1.1"
+    "async": "1.5.2",
+    "bunyan": "1.8.0",
+    "config-chain": "1.1.10",
+    "cors": "2.7.1",
+    "dotenv": "2.0.0",
+    "express": "4.13.4",
+    "fh-mbaas-api": "5.5.6",
+    "fh-wfm-mediator": "0.0.10",
+    "fh-wfm-template-build": "0.0.7",
+    "mochify": "2.17.0",
+    "should": "8.3.0"
   },
   "dependencies": {
-    "fh-wfm-component-signature": "0.0.5",
-    "fh-wfm-template-build": "0.0.5",
-    "lodash": "^4.7.0",
-    "q": "^1.4.1"
+    "fh-wfm-component-signature": "0.0.7",
+    "lodash": "4.7.0",
+    "q": "1.4.1"
   }
 }
