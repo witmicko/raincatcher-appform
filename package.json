@@ -34,7 +34,7 @@
     "should": "8.3.0"
   },
   "dependencies": {
-    "fh-wfm-component-signature": "0.0.7",
+    "fh-wfm-signature": "0.0.8",
     "lodash": "4.7.0",
     "q": "1.4.1"
   }
