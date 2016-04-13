@@ -14,12 +14,13 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '-->\n' +
     '<p class="md-caption">{{field.props.name}}</p>\n' +
     '<p>{{field.props.helpText}}</p>\n' +
-    '  <md-button type="button" ng-click="ctrl.setLocation($event)" class="md-raised md-primary">\n' +
-    '    <md-icon md-font-set="material-icons">location_searching</md-icon>\n' +
-    '    Get Location\n' +
-    '  </md-button>\n' +
     '\n' +
-    '  <div layout="row">\n' +
+    '<md-button type="button" ng-click="ctrl.setLocation($event)" class="md-raised md-primary">\n' +
+    '  <md-icon md-font-set="material-icons">location_searching</md-icon>\n' +
+    '  Get Location\n' +
+    '</md-button>\n' +
+    '\n' +
+    '<div layout="row">\n' +
     '  <md-input-container class="{{field.props.fieldCode}} appform-field-location md-block" flex>\n' +
     '    <input type="number"\n' +
     '      placeholder="Latitude"\n' +

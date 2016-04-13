@@ -10,6 +10,21 @@
       <appform-field-number model="ctrl.model" field="ctrl.field"></appform-field-number>
     </div>
 
+    <div ng-switch-when="dateTime" ng-switch="ctrl.field.props.fieldOptions.definition.datetimeUnit">
+      <div ng-switch-when="date">
+        <appform-field-date model="ctrl.model" field="ctrl.field"></appform-field-date>
+      </div>
+       <div ng-switch-when="datetime">
+         <appform-field-datetime model="ctrl.model" field="ctrl.field"></appform-field-datetime>
+       </div>
+       <div ng-switch-when="time">
+         <appform-field-time model="ctrl.model" field="ctrl.field"></appform-field-time>
+       </div>
+       <div ng-switch-default>
+         {{ctrl.field.props.fieldOptions.definition.datetimeUnit}}
+       </div>
+    </div>
+
     <div ng-switch-when="location">
       <appform-field-location model="ctrl.model" field="ctrl.field"></appform-field-location>
     </div>

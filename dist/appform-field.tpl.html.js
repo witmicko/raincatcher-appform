@@ -19,6 +19,21 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '      <appform-field-number model="ctrl.model" field="ctrl.field"></appform-field-number>\n' +
     '    </div>\n' +
     '\n' +
+    '    <div ng-switch-when="dateTime" ng-switch="ctrl.field.props.fieldOptions.definition.datetimeUnit">\n' +
+    '      <div ng-switch-when="date">\n' +
+    '        <appform-field-date model="ctrl.model" field="ctrl.field"></appform-field-date>\n' +
+    '      </div>\n' +
+    '       <div ng-switch-when="datetime">\n' +
+    '         <appform-field-datetime model="ctrl.model" field="ctrl.field"></appform-field-datetime>\n' +
+    '       </div>\n' +
+    '       <div ng-switch-when="time">\n' +
+    '         <appform-field-time model="ctrl.model" field="ctrl.field"></appform-field-time>\n' +
+    '       </div>\n' +
+    '       <div ng-switch-default>\n' +
+    '         {{ctrl.field.props.fieldOptions.definition.datetimeUnit}}\n' +
+    '       </div>\n' +
+    '    </div>\n' +
+    '\n' +
     '    <div ng-switch-when="location">\n' +
     '      <appform-field-location model="ctrl.model" field="ctrl.field"></appform-field-location>\n' +
     '    </div>\n' +
