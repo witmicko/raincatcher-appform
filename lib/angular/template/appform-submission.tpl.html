@@ -49,6 +49,19 @@
         </md-list-item>
       </div>
 
+      <div ng-switch-when="photo">
+        <md-list-item class="md-2-line with-image">
+          <md-icon md-font-set="material-icons">camera</md-icon>
+          <div class="md-list-item-text">
+            <h3>
+              <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="photo"></img>
+              <img ng-if="!field.value.localURI" ng-src="{{field.value.imgHeader + field.value.data}}" alt="photo"></img>
+            </h3>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </div>
+
       <div ng-switch-default>
         <md-list-item class="md-2-line">
           <md-icon md-font-set="material-icons">text_format</md-icon>

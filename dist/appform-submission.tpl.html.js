@@ -58,6 +58,19 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '        </md-list-item>\n' +
     '      </div>\n' +
     '\n' +
+    '      <div ng-switch-when="photo">\n' +
+    '        <md-list-item class="md-2-line with-image">\n' +
+    '          <md-icon md-font-set="material-icons">camera</md-icon>\n' +
+    '          <div class="md-list-item-text">\n' +
+    '            <h3>\n' +
+    '              <img ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="photo"></img>\n' +
+    '              <img ng-if="!field.value.localURI" ng-src="{{field.value.imgHeader + field.value.data}}" alt="photo"></img>\n' +
+    '            </h3>\n' +
+    '          </div>\n' +
+    '          <md-divider></md-divider>\n' +
+    '        </md-list-item>\n' +
+    '      </div>\n' +
+    '\n' +
     '      <div ng-switch-default>\n' +
     '        <md-list-item class="md-2-line">\n' +
     '          <md-icon md-font-set="material-icons">text_format</md-icon>\n' +

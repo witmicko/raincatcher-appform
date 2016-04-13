@@ -30,18 +30,23 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '      </md-input-container>\n' +
     '    </div>\n' +
     '\n' +
+    '    <div ng-switch-when="photo" flex class="appform-photo">\n' +
+    '      <appform-field-photo model="ctrl.model" field="ctrl.field"></appform-field-photo>\n' +
+    '    </div>\n' +
+    '\n' +
     '    <div ng-switch-default flex>\n' +
     '      <md-input-container class="md-block">\n' +
-    '        <label>{{ctrl.field.props.name}}</label>\n' +
+    '        <label>{{ctrl.field.props.type}}</label>\n' +
     '        <input\n' +
     '          type="text"\n' +
-    '          placeholder="{{ctrl.field.props.helpText}}"\n' +
     '          name="inputName"\n' +
     '          ng-model="ctrl.model.value"\n' +
     '          ng-required="ctrl.field.props.required"\n' +
+    '          ng-class="ctrl.field.props.type"\n' +
     '        ></input>\n' +
     '        <div ng-messages="fieldForm.inputName.$error" ng-show="fieldForm.inputName.$dirty || fieldForm.$submitted">\n' +
-    '          <div ng-message="required">A {{ctrl.field.props.name}} is required.</div>\n' +
+    '          <div ng-message="required" ng-show="ctrl.field.props.helpText">{{ctrl.field.props.helpText}}</div>\n' +
+    '          <div ng-message="required" ng-hide="ctrl.field.props.helpText">A {{ctrl.field.props.name}} is required.</div>\n' +
     '        </div>\n' +
     '      </md-input-container>\n' +
     '    </div>\n' +

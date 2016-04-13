@@ -21,18 +21,23 @@
       </md-input-container>
     </div>
 
+    <div ng-switch-when="photo" flex class="appform-photo">
+      <appform-field-photo model="ctrl.model" field="ctrl.field"></appform-field-photo>
+    </div>
+
     <div ng-switch-default flex>
       <md-input-container class="md-block">
-        <label>{{ctrl.field.props.name}}</label>
+        <label>{{ctrl.field.props.type}}</label>
         <input
           type="text"
-          placeholder="{{ctrl.field.props.helpText}}"
           name="inputName"
           ng-model="ctrl.model.value"
           ng-required="ctrl.field.props.required"
+          ng-class="ctrl.field.props.type"
         ></input>
         <div ng-messages="fieldForm.inputName.$error" ng-show="fieldForm.inputName.$dirty || fieldForm.$submitted">
-          <div ng-message="required">A {{ctrl.field.props.name}} is required.</div>
+          <div ng-message="required" ng-show="ctrl.field.props.helpText">{{ctrl.field.props.helpText}}</div>
+          <div ng-message="required" ng-hide="ctrl.field.props.helpText">A {{ctrl.field.props.name}} is required.</div>
         </div>
       </md-input-container>
     </div>
