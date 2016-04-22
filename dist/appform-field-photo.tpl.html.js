@@ -13,7 +13,10 @@ ngModule.run(['$templateCache', function ($templateCache) {
     ' This is unpublished proprietary source code of Red Hat.\n' +
     '-->\n' +
     '<div>\n' +
-    '  <button ng-click="ctrl.capture($event)">Take a photo</button>\n' +
+    '  <md-button type="button" ng-click="ctrl.capture($event)" class="md-raised md-primary">{{ctrl.model.value ? \'Replace\' : \'Take a\'}} photo</md-button>\n' +
+    '  <br>\n' +
+    '  <img class=\'appform-photo\' ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="photo"></img>\n' +
+    '  <img class=\'appform-photo\' ng-if="ctrl.model.value" ng-src="{{ctrl.model.value}}" alt="photo"></img>\n' +
     '</div>\n' +
     '');
 }]);
