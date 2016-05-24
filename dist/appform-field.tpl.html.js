@@ -51,7 +51,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '\n' +
     '    <div ng-switch-default flex>\n' +
     '      <md-input-container class="md-block">\n' +
-    '        <label>{{ctrl.field.props.type}}</label>\n' +
+    '        <label>{{ctrl.field.props.name}}</label>\n' +
     '        <input\n' +
     '          type="text"\n' +
     '          name="inputName"\n' +
