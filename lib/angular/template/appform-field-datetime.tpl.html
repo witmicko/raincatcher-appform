@@ -30,6 +30,7 @@
       placeholder="{{ctrl.field.props.helpText}}"
       name="inputTime"
       ng-model="ctrl.model.time"
+      ng-change="ctrl.updateModel()"
       ng-required="ctrl.field.props.required"
     ></input>
     <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">

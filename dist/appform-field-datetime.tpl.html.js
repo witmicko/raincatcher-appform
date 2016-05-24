@@ -39,6 +39,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '      placeholder="{{ctrl.field.props.helpText}}"\n' +
     '      name="inputTime"\n' +
     '      ng-model="ctrl.model.time"\n' +
+    '      ng-change="ctrl.updateModel()"\n' +
     '      ng-required="ctrl.field.props.required"\n' +
     '    ></input>\n' +
     '    <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">\n' +
