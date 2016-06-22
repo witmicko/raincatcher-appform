@@ -19,7 +19,7 @@
     "appform"
   ],
   "author": "Brian Leathem",
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "license": "MIT",
   "devDependencies": {
     "async": "1.5.2",
     "bunyan": "1.8.0",
