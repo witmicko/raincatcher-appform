@@ -7,11 +7,6 @@ try {
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field-datetime.tpl.html',
-    '<!--\n' +
-    ' CONFIDENTIAL\n' +
-    ' Copyright 2016 Red Hat, Inc. and/or its affiliates.\n' +
-    ' This is unpublished proprietary source code of Red Hat.\n' +
-    '-->\n' +
     '\n' +
     '<p class="md-caption">{{field.props.name}}</p>\n' +
     '<div layout="row">\n' +

@@ -7,11 +7,6 @@ try {
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field-date.tpl.html',
-    '<!--\n' +
-    ' CONFIDENTIAL\n' +
-    ' Copyright 2016 Red Hat, Inc. and/or its affiliates.\n' +
-    ' This is unpublished proprietary source code of Red Hat.\n' +
-    '-->\n' +
     '\n' +
     '<md-input-container class="md-block" class="{{field.props.fieldCode}} appform-field-number">\n' +
     '  <label for="inputDate" class="">{{field.props.name}}</label>\n' +
