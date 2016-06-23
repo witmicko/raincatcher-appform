@@ -26,19 +26,19 @@ This module provides a injectable file service : `appformClient`
 
 This client offers these functions :
 
-*`init`
-*`list`
-*`getForm`
-*`getSubmissionLocal`
-*`getSubmission`
-*`getSubmissions`
-*`getFields`
-*`createSubmission`
-*`submitSubmission`
-*`uploadSubmission`
-*`composeSubmissionResult`
-*`syncStepResult`
-*`watchSubmissionModel`
+* `init`
+* `list`
+* `getForm`
+* `getSubmissionLocal`
+* `getSubmission`
+* `getSubmissions`
+* `getFields`
+* `createSubmission`
+* `submitSubmission`
+* `uploadSubmission`
+* `composeSubmissionResult`
+* `syncStepResult`
+* `watchSubmissionModel`
 
 Example of `getForm` usage :
 
