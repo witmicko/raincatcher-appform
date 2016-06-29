@@ -1,6 +1,6 @@
-# FeedHenry WFM AppForms
+# FeedHenry RainCatcher AppForms
 
-A WFM AppForm module for FeedHenry WFM. This module provides :
+A RainCatcher AppForm module for FeedHenry RainCatcher. This module provides :
 
 - A set of AngularJS directives
 - An AngularJS Service to interact with AppForms.
@@ -50,7 +50,7 @@ resolve: {
   }
 ```
 
-For a more complete example around files operations, please check the [demo portal app](https://github.com/feedhenry-staff/wfm-portal/blob/master/src/app/appform/appform.js).
+For a more complete example around files operations, please check the [demo portal app](https://github.com/feedhenry-raincatcher/raincatcher-demo-portal/blob/master/src/app/appform/appform.js).
 
 ##### Directives
 
@@ -68,7 +68,7 @@ For a more complete example around files operations, please check the [demo port
 
 ## Usage in an express backend
 
-The server-side component of this WFM module exports a function that takes express and mediator instances as parameters, as in:
+The server-side component of this RainCatcher module exports a function that takes express and mediator instances as parameters, as in:
 
 ```javascript
 var express = require('express')
