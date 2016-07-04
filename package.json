@@ -27,9 +27,15 @@
     "cors": "2.7.1",
     "dotenv": "2.0.0",
     "express": "4.13.4",
+<<<<<<< HEAD
     "fh-mbaas-api": "5.5.6",
     "fh-wfm-mediator": "0.0.13",
     "fh-wfm-template-build": "0.0.8",
+=======
+    "fh-mbaas-api": "5.13.1",
+    "fh-wfm-mediator": "0.0.12",
+    "fh-wfm-template-build": "0.0.7",
+>>>>>>> ab437e1... update mbaas module
     "mochify": "2.17.0",
     "should": "8.3.0"
   },
