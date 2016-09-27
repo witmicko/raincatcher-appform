@@ -1,17 +1,21 @@
-<md-input-container class="md-block" class="{{field.props.fieldCode}} appform-field-number">
-  <label for="inputName" class="">{{field.props.name}}</label>
+<!--
+
+The template for rendering a Number field into the form.
+Note here that the ng-change directive is bound to the fieldNumberCtrl.field.updateValue function.
+ This function is internal to the field definition in the Submission Model.
+
+ Any values that are to be applied to the submission for this field should use that function.
+-->
+
+<md-input-container class="md-block" class="appform-field-number">
+
+  <label for="inputName" class="">{{fieldNumberCtrl.field.name}}</label>
   <input type="number"
-    placeholder="{{ctrl.field.props.helpText}}"
     name="inputName"
-    ng-model="ctrl.model.value"
-    min="{{field.props.fieldOptions.validation.min}}"
-    max="{{field.props.fieldOptions.validation.max}}"
-    ng-required="ctrl.field.props.required"
-  ></input>
-  <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">
-    <div ng-message="required">A {{field.props.name}} is required.</div>
-    <div ng-message="number">You did not enter a valid number</div>
-    <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>
-    <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>
-  </div>
+    ng-model="fieldNumberCtrl.field.value"
+    min="{{fieldNumberCtrl.field.fieldOptions.validation.min}}"
+    max="{{fieldNumberCtrl.field.fieldOptions.validation.max}}"
+    ng-required="fieldNumberCtrl.field.required",
+    ng-change="fieldNumberCtrl.field.updateValue()"
+  >
 </md-input-container>

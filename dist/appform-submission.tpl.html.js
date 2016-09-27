@@ -1,14 +1,14 @@
 var ngModule;
 try {
-  ngModule = angular.module('wfm.appform.directives');
+  ngModule = angular.module('wfm.appform');
 } catch (e) {
-  ngModule = angular.module('wfm.appform.directives', []);
+  ngModule = angular.module('wfm.appform', []);
 }
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-submission.tpl.html',
     '\n' +
-    '<md-subheader>{{ctrl.form.props.name}}</md-subheader>\n' +
+    '<md-subheader>{{ctrl.form.name}}</md-subheader>\n' +
     '\n' +
     '<md-list class="appform-view">\n' +
     '\n' +
@@ -17,7 +17,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '  </md-list-item>\n' +
     '\n' +
     '  <div ng-repeat="field in ctrl.fields">\n' +
-    '    <ng-switch on="field.props.type">\n' +
+    '    <ng-switch on="field.type">\n' +
     '      <div ng-switch-when="signature">\n' +
     '        <md-list-item class="md-2-line with-image">\n' +
     '          <md-icon md-font-set="material-icons">gesture</md-icon>\n' +
@@ -26,7 +26,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '              <signature ng-if="field.value.localURI" value="field.value.localURI" alt="Signature"></signature>\n' +
     '              <signature ng-if="!field.value.localURI" value="field.value.imgHeader + field.value.data" alt="Signature"></signature>\n' +
     '            </h3>\n' +
-    '            <p>{{field.props.name}}</p>\n' +
+    '            <p>{{field.name}}</p>\n' +
     '          </div>\n' +
     '          <md-divider></md-divider>\n' +
     '        </md-list-item>\n' +
@@ -37,7 +37,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '          <md-icon md-font-set="material-icons">place</md-icon>\n' +
     '          <div class="md-list-item-text">\n' +
     '            <h3>{{field.value.lat}}N, {{field.value.long}}W</h3>\n' +
-    '            <p>{{field.props.name}}</p>\n' +
+    '            <p>{{field.name}}</p>\n' +
     '          </div>\n' +
     '        </md-list-item>\n' +
     '      </div>\n' +
@@ -47,7 +47,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '          <md-icon md-font-set="material-icons">filter_4</md-icon>\n' +
     '          <div class="md-list-item-text">\n' +
     '            <h3>{{field.value}}</h3>\n' +
-    '            <p>{{field.props.name}}</p>\n' +
+    '            <p>{{field.name}}</p>\n' +
     '          </div>\n' +
     '          <md-divider></md-divider>\n' +
     '        </md-list-item>\n' +
@@ -71,7 +71,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '          <md-icon md-font-set="material-icons">text_format</md-icon>\n' +
     '          <div class="md-list-item-text">\n' +
     '            <h3>{{field.value}}</h3>\n' +
-    '            <p>{{field.props.name}}</p>\n' +
+    '            <p>{{field.name}}</p>\n' +
     '          </div>\n' +
     '          <md-divider></md-divider>\n' +
     '        </md-list-item>\n' +

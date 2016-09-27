@@ -1,17 +1,11 @@
 
-<md-input-container class="md-block" class="{{field.props.fieldCode}} appform-field-number">
-  <label for="inputTime" class="">{{field.props.name}}</label>
+<md-input-container class="md-block" class="appform-field-number">
+  <label for="inputTime" class="">{{fieldTimeCtrl.field.name}}</label>
   <input type="time"
-    placeholder="{{ctrl.field.props.helpText}}"
+    placeholder="{{fieldTimeCtrl.field.helpText}}"
     name="inputTime"
-    ng-model="ctrl.model.time"
-    ng-change="ctrl.updateModel()"
-    ng-required="ctrl.field.props.required"
-  ></input>
-  <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">
-    <div ng-message="required">A {{field.props.name}} is required.</div>
-    <div ng-message="number">You did not enter a valid time</div>
-    <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>
-    <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>
-  </div>
+    ng-model="fieldTimeCtrl.field.value"
+    ng-change="fieldTimeCtrl.updateModel()"
+    ng-required="fieldTimeCtrl.field.required"
+  >
 </md-input-container>

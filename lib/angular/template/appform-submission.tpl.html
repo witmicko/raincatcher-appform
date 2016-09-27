@@ -1,5 +1,5 @@
 
-<md-subheader>{{ctrl.form.props.name}}</md-subheader>
+<md-subheader>{{ctrl.form.name}}</md-subheader>
 
 <md-list class="appform-view">
 
@@ -8,7 +8,7 @@
   </md-list-item>
 
   <div ng-repeat="field in ctrl.fields">
-    <ng-switch on="field.props.type">
+    <ng-switch on="field.type">
       <div ng-switch-when="signature">
         <md-list-item class="md-2-line with-image">
           <md-icon md-font-set="material-icons">gesture</md-icon>
@@ -17,7 +17,7 @@
               <signature ng-if="field.value.localURI" value="field.value.localURI" alt="Signature"></signature>
               <signature ng-if="!field.value.localURI" value="field.value.imgHeader + field.value.data" alt="Signature"></signature>
             </h3>
-            <p>{{field.props.name}}</p>
+            <p>{{field.name}}</p>
           </div>
           <md-divider></md-divider>
         </md-list-item>
@@ -28,7 +28,7 @@
           <md-icon md-font-set="material-icons">place</md-icon>
           <div class="md-list-item-text">
             <h3>{{field.value.lat}}N, {{field.value.long}}W</h3>
-            <p>{{field.props.name}}</p>
+            <p>{{field.name}}</p>
           </div>
         </md-list-item>
       </div>
@@ -38,7 +38,7 @@
           <md-icon md-font-set="material-icons">filter_4</md-icon>
           <div class="md-list-item-text">
             <h3>{{field.value}}</h3>
-            <p>{{field.props.name}}</p>
+            <p>{{field.name}}</p>
           </div>
           <md-divider></md-divider>
         </md-list-item>
@@ -62,7 +62,7 @@
           <md-icon md-font-set="material-icons">text_format</md-icon>
           <div class="md-list-item-text">
             <h3>{{field.value}}</h3>
-            <p>{{field.props.name}}</p>
+            <p>{{field.name}}</p>
           </div>
           <md-divider></md-divider>
         </md-list-item>
