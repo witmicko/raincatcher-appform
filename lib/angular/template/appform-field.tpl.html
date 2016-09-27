@@ -1,56 +1,40 @@
-<ng-form name="fieldForm" ng-submit="ctrl.submit()">
-  <div ng-switch="ctrl.field.props.type">
+<!--
+ Parent view for rendering all of the field types.
+-->
 
-    <div ng-switch-when="number">
-      <appform-field-number model="ctrl.model" field="ctrl.field"></appform-field-number>
-    </div>
-
-    <div ng-switch-when="dateTime" ng-switch="ctrl.field.props.fieldOptions.definition.datetimeUnit">
-      <div ng-switch-when="date">
-        <appform-field-date model="ctrl.model" field="ctrl.field"></appform-field-date>
-      </div>
-       <div ng-switch-when="datetime">
-         <appform-field-datetime model="ctrl.model" field="ctrl.field"></appform-field-datetime>
-       </div>
-       <div ng-switch-when="time">
-         <appform-field-time model="ctrl.model" field="ctrl.field"></appform-field-time>
-       </div>
-       <div ng-switch-default>
-         {{ctrl.field.props.fieldOptions.definition.datetimeUnit}}
-       </div>
-    </div>
-
-    <div ng-switch-when="location">
-      <appform-field-location model="ctrl.model" field="ctrl.field"></appform-field-location>
-    </div>
-
-    <div ng-switch-when="signature" flex class="appform-signature">
-      <md-input-container class="md-block">
-        <p class="md-caption">{{ctrl.field.props.name}}</p>
-        <signature-form value="ctrl.model.value"></signature-form>
-      </md-input-container>
-    </div>
-
-    <div ng-switch-when="photo" flex class="appform-photo">
-      <appform-field-photo model="ctrl.model" field="ctrl.field"></appform-field-photo>
-    </div>
-
-    <div ng-switch-default flex>
-      <md-input-container class="md-block">
-        <label>{{ctrl.field.props.name}}</label>
-        <input
-          type="text"
-          name="inputName"
-          ng-model="ctrl.model.value"
-          ng-required="ctrl.field.props.required"
-          ng-class="ctrl.field.props.type"
-        ></input>
-        <div ng-messages="fieldForm.inputName.$error" ng-show="fieldForm.inputName.$dirty || fieldForm.$submitted">
-          <div ng-message="required" ng-show="ctrl.field.props.helpText">{{ctrl.field.props.helpText}}</div>
-          <div ng-message="required" ng-hide="ctrl.field.props.helpText">A {{ctrl.field.props.name}} is required.</div>
-        </div>
-      </md-input-container>
-    </div>
-
+<div ng-switch="fieldCtrl.field.type">
+  <div ng-switch-when="number">
+    <appform-field-number></appform-field-number>
   </div>
-</ng-form>
+
+  <div ng-switch-when="text">
+    <appform-field-text></appform-field-text>
+  </div>
+
+  <div ng-switch-when="dateTime" ng-switch="fieldCtrl.field.fieldOptions.definition.datetimeUnit">
+    <div ng-switch-when="date">
+      <appform-field-date></appform-field-date>
+    </div>
+    <div ng-switch-when="datetime">
+      <appform-field-datetime></appform-field-datetime>
+    </div>
+    <div ng-switch-when="time">
+      <appform-field-time></appform-field-time>
+    </div>
+  </div>
+
+  <div ng-switch-when="location">
+    <appform-field-location></appform-field-location>
+  </div>
+
+  <div ng-switch-when="signature" flex class="appform-signature">
+    <md-input-container class="md-block">
+      <p class="md-caption">{{fieldCtrl.field.name}}</p>
+      <signature-form value="fieldCtrl.field.value"></signature-form>
+    </md-input-container>
+  </div>
+
+  <div ng-switch-when="photo" flex class="appform-photo">
+    <appform-field-photo></appform-field-photo>
+  </div>
+</div>

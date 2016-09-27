@@ -1,6 +1,6 @@
 <div>
-  <md-button type="button" ng-click="ctrl.capture($event)" class="md-raised md-primary">{{ctrl.model.value ? 'Replace' : 'Take a'}} photo</md-button>
+  <md-button type="button" ng-click="fieldPhotoCtrl.capture($event)" class="md-raised md-primary">{{fieldPhotoCtrl.field.value ? 'Replace' : 'Take a'}} photo</md-button>
   <br>
-  <img class='appform-photo' ng-if="field.value.localURI" ng-src="{{field.value.localURI}}" alt="photo"></img>
-  <img class='appform-photo' ng-if="ctrl.model.value" ng-src="{{ctrl.model.value}}" alt="photo"></img>
+  <img class='appform-photo' ng-if="fieldPhotoCtrl.field.value.localURI" ng-src="{{fieldPhotoCtrl.field.value.localURI}}" alt="photo">
+  <img class='appform-photo' ng-if="fieldPhotoCtrl.field.value" ng-src="{{fieldPhotoCtrl.field.value}}" alt="photo">
 </div>

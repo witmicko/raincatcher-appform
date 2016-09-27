@@ -1,15 +1,22 @@
+<!-- Top Level rendering of a form. This template contains all of the pages and page controls for a single form. -->
+
 <div class="app-form" layout-padding >
 
-<form name="workorderForm" novalidate>
-  <div ng-repeat="field in ctrl.fields">
-    <appform-field field="field" model="ctrl.model[field.props.fieldCode || field.props._id]"></appform-field>
-  </div>
+  <div>Form: {{ formCtrl.form.name }}</div>
 
-  <div class="workflow-actions md-padding md-whiteframe-z4">
-    <md-button class="md-primary md-hue-1" ng-click="ctrl.back($event)">Back</md-button>
-    <md-button type="button" ng-click="ctrl.done($event, workorderForm.$valid)" class="md-primary">Continue</md-button>
-  </div><!-- workflow-actions-->
+  <!--<form name="workorderForm" novalidate>-->
 
-</form>
+    <!--&lt;!&ndash; TODO: Page Numbering &ndash;&gt;-->
+
+    <div ng-repeat="page in formCtrl.form.pages">
+      <appform-page></appform-page>
+    </div>
+
+    <div class="workflow-actions md-padding md-whiteframe-z4">
+      <md-button class="md-primary md-hue-1" ng-click="formCtrl.back()">Back</md-button>
+      <md-button type="button" ng-click="formCtrl.submit()" class="md-primary">Continue</md-button>
+    </div><!-- workflow-actions-->
+
+  <!--</form>-->
 
 </div><!-- app-form -->

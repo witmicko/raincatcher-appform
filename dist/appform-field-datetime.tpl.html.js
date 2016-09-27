@@ -1,48 +1,39 @@
 var ngModule;
 try {
-  ngModule = angular.module('wfm.appform.directives');
+  ngModule = angular.module('wfm.appform');
 } catch (e) {
-  ngModule = angular.module('wfm.appform.directives', []);
+  ngModule = angular.module('wfm.appform', []);
 }
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field-datetime.tpl.html',
     '\n' +
-    '<p class="md-caption">{{field.props.name}}</p>\n' +
+    '<p class="md-caption">{{fieldDateCtrl.field.name}}</p>\n' +
     '<div layout="row">\n' +
-    '  <md-input-container flex class="md-block" class="{{field.props.fieldCode}} appform-field-number">\n' +
+    '  <md-input-container flex class="md-block" class="appform-field-number">\n' +
     '    <label for="inputDate" class="">Date</label>\n' +
     '    <input type="date"\n' +
-    '      placeholder="{{ctrl.field.props.helpText}}"\n' +
+    '      placeholder="{{fieldDateCtrl.field.helpText}}"\n' +
     '      name="inputDate"\n' +
-    '      ng-model="ctrl.model.date"\n' +
-    '      ng-change="ctrl.updateModel()"\n' +
-    '      min="{{field.props.fieldOptions.validation.min}}"\n' +
-    '      max="{{field.props.fieldOptions.validation.max}}"\n' +
-    '      ng-required="ctrl.field.props.required"\n' +
-    '    ></input>\n' +
-    '    <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">\n' +
-    '      <div ng-message="required">A {{field.props.name}} is required.</div>\n' +
-    '      <div ng-message="number">You did not enter a valid date</div>\n' +
-    '      <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>\n' +
-    '      <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>\n' +
-    '    </div>\n' +
+    '      ng-model="fieldDateCtrl.field.value.date"\n' +
+    '      ng-change="fieldDateCtrl.updateModel()"\n' +
+    '      min="{{fieldDateCtrl.field.fieldOptions.validation.min}}"\n' +
+    '      max="{{fieldDateCtrl.field.fieldOptions.validation.max}}"\n' +
+    '      ng-required="fieldDateCtrl.field.required"\n' +
+    '    >\n' +
     '  </md-input-container>\n' +
-    '  <md-input-container flex class="md-block" class="{{field.props.fieldCode}} appform-field-number">\n' +
+    '\n' +
+    '  <md-input-container flex class="md-block" class="appform-field-number">\n' +
     '    <label for="inputTime" class="">Time</label>\n' +
     '    <input type="time"\n' +
-    '      placeholder="{{ctrl.field.props.helpText}}"\n' +
-    '      name="inputTime"\n' +
-    '      ng-model="ctrl.model.time"\n' +
-    '      ng-change="ctrl.updateModel()"\n' +
-    '      ng-required="ctrl.field.props.required"\n' +
-    '    ></input>\n' +
-    '    <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">\n' +
-    '      <div ng-message="required">A {{field.props.name}} is required.</div>\n' +
-    '      <div ng-message="number">You did not enter a valid time</div>\n' +
-    '      <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>\n' +
-    '      <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>\n' +
-    '    </div>\n' +
+    '           placeholder="{{fieldDateCtrl.field.helpText}}"\n' +
+    '           name="inputTime"\n' +
+    '           ng-model="fieldDateCtrl.field.value.time"\n' +
+    '           ng-change="fieldDateCtrl.updateModel()"\n' +
+    '           min="{{fieldDateCtrl.field.fieldOptions.validation.min}}"\n' +
+    '           max="{{fieldDateCtrl.field.fieldOptions.validation.max}}"\n' +
+    '           ng-required="fieldDateCtrl.field.required"\n' +
+    '    >\n' +
     '  </md-input-container>\n' +
     '</div>\n' +
     '');
