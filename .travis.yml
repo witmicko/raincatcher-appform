@@ -1,10 +1,21 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "4.4.2"
+- '0.10'
+- 4.4.2
 sudo: false
+services:
+- docker
 before_install:
-  - npm install -g npm@2.13.5
-  - npm install -g grunt@0.4.5
-  - npm install -g grunt-cli
+- npm install -g npm@2.13.5
+- npm install -g grunt@0.4.5
+- npm install -g grunt-cli
 install: npm install
+script:
+- bash <(curl https://gist.githubusercontent.com/feedhenry-raincacher/01ac4cdb3b0770bdb58489dbc17ed6b6/raw/6205a628c3616f6736fd866d5f0fba0a781ec1e4/sonarqube.sh)
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: change
+    rooms:
+      secure: v+fj38WqYjoEMM5qNjIgZpXQhJrZ7IW6LN8KQCUo8tuqncGhjecdIpAcb6CEj/4waBHOTO18jACm/gTKGaVn7/1+PSQLRh0d2kQa0QFisxEqfOO19lclhONOLIWvmih6Mu36KWqMySoztoGHpbzfZA3TjGet95rXTrdsSZBIq3kQ2iTKH6ax6iSZ1PWfQFYDDCl96d475RR2rdpbPs3Bs+/N5HS3cdPdRMvyJ9NbIWFE5sHQrthD+AMiJjYh8oO/521I8tGeKXk7xZF7wk3I6JrXYgHA7xj8m5cM6eZ2T4Z596NGu/B7shRjoX+H1BAECaKRnJEODe2hqs32sQ9rgP32Pr8Uu4kQObxkLbhK99NoJg+NaD+/S3uKKffBXOFTVCQeX/hLhsjqOm8sUsf8G+0/C56KcrSPpV+EWuUZQE9NY58gD21t0Mcg+TmLk3N9zfr4VjHWfNgzcyLQV2wxDqqwrTOV6FXjQW2HhvU7KDAxtzv1GmSagRL2xge0jmf10hCmfmqbQRtfpTcZHwlwvLRxqV7q1LP1exIyNZMa4SD3H/1YWqBcLalJNvVXv1gzW5leRlJSMqqM7giZU2rZnagEBX6lWmZ+RyRaT1AWFh9XrrPwKlttIIAO01tdxYAUEKXRptXesF1KI+ElB1lEPUxKZQTKYi8/IEOh4crRzZY=
