@@ -1,30 +1,24 @@
 var ngModule;
 try {
-  ngModule = angular.module('wfm.appform.directives');
+  ngModule = angular.module('wfm.appform');
 } catch (e) {
-  ngModule = angular.module('wfm.appform.directives', []);
+  ngModule = angular.module('wfm.appform', []);
 }
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field-date.tpl.html',
     '\n' +
-    '<md-input-container class="md-block" class="{{field.props.fieldCode}} appform-field-number">\n' +
-    '  <label for="inputDate" class="">{{field.props.name}}</label>\n' +
+    '<md-input-container class="md-block" class="appform-field-number">\n' +
+    '  <label for="inputDate" class="">{{fieldDateCtrl.field.name}}</label>\n' +
     '  <input type="date"\n' +
-    '    placeholder="{{ctrl.field.props.helpText}}"\n' +
+    '    placeholder="{{fieldDateCtrl.field.helpText}}"\n' +
     '    name="inputDate"\n' +
-    '    ng-model="ctrl.model.date"\n' +
-    '    ng-change="ctrl.updateModel()"\n' +
-    '    min="{{field.props.fieldOptions.validation.min}}"\n' +
-    '    max="{{field.props.fieldOptions.validation.max}}"\n' +
-    '    ng-required="ctrl.field.props.required"\n' +
-    '  ></input>\n' +
-    '  <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">\n' +
-    '    <div ng-message="required">A {{field.props.name}} is required.</div>\n' +
-    '    <div ng-message="number">You did not enter a valid datae</div>\n' +
-    '    <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>\n' +
-    '    <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>\n' +
-    '  </div>\n' +
+    '    ng-model="fieldDateCtrl.field.value"\n' +
+    '    ng-change="fieldDateCtrl.updateModel()"\n' +
+    '    min="{{fieldDateCtrl.field.fieldOptions.validation.min}}"\n' +
+    '    max="{{fieldDateCtrl.field.fieldOptions.validation.max}}"\n' +
+    '    ng-required="fieldDateCtrl.field.required"\n' +
+    '  >\n' +
     '</md-input-container>\n' +
     '');
 }]);

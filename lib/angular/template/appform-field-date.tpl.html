@@ -1,19 +1,13 @@
 
-<md-input-container class="md-block" class="{{field.props.fieldCode}} appform-field-number">
-  <label for="inputDate" class="">{{field.props.name}}</label>
+<md-input-container class="md-block" class="appform-field-number">
+  <label for="inputDate" class="">{{fieldDateCtrl.field.name}}</label>
   <input type="date"
-    placeholder="{{ctrl.field.props.helpText}}"
+    placeholder="{{fieldDateCtrl.field.helpText}}"
     name="inputDate"
-    ng-model="ctrl.model.date"
-    ng-change="ctrl.updateModel()"
-    min="{{field.props.fieldOptions.validation.min}}"
-    max="{{field.props.fieldOptions.validation.max}}"
-    ng-required="ctrl.field.props.required"
-  ></input>
-  <div ng-messages="$parent.fieldForm.inputName.$error" ng-show="$parent.fieldForm.inputName.$dirty || $parent.fieldForm.$submitted">
-    <div ng-message="required">A {{field.props.name}} is required.</div>
-    <div ng-message="number">You did not enter a valid datae</div>
-    <div ng-message="max" class="help-block">Value must be less than {{field.props.fieldOptions.validation.max}}.</div>
-    <div ng-message="min" class="help-block">Value must be larger than {{field.props.fieldOptions.validation.min}}.</div>
-  </div>
+    ng-model="fieldDateCtrl.field.value"
+    ng-change="fieldDateCtrl.updateModel()"
+    min="{{fieldDateCtrl.field.fieldOptions.validation.min}}"
+    max="{{fieldDateCtrl.field.fieldOptions.validation.max}}"
+    ng-required="fieldDateCtrl.field.required"
+  >
 </md-input-container>

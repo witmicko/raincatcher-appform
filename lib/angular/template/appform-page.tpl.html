@@ -1,0 +1,15 @@
+<!-- Template for a single page in a forms app. It should render out all of the sections in the page -->
+
+<div class="appform-page">
+
+  <div class="page">Page {{pageCtrl.page.name}}</div>
+
+  <!--TODO: All fields should have sections-->
+  <div ng-if="pageCtrl.page.sections" ng-repeat="section in pageCtrl.page.sections">
+    <appform-section></appform-section>
+  </div>
+
+  <div ng-if="pageCtrl.page.fields" ng-repeat="field in pageCtrl.page.fields">
+    <appform-field></appform-field>
+  </div>
+</div>

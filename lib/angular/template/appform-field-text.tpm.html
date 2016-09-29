@@ -1,0 +1,12 @@
+<md-input-container class="md-block" class="appform-field-text">
+
+  <label for="inputName" class="">{{fieldTextCtrl.field.name}}</label>
+  <input type="text"
+         placeholder="{{fieldTextCtrl.field.helpText}}"
+         name="inputName"
+         ng-model="fieldTextCtrl.field.value"
+         min="{{fieldTextCtrl.field.fieldOptions.validation.min}}"
+         max="{{fieldTextCtrl.field.fieldOptions.validation.max}}"
+         ng-required="fieldTextCtrl.field.required"
+  >
+</md-input-container>
