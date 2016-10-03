@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         reporter: 'spec'
       },
       unit: {
-        src: ['test/client/**/*.js']
+        src: ['lib/angular/**/*-spec.js']
       }
     }
   });

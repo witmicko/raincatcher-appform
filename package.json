@@ -21,6 +21,8 @@
   "author": "Brian Leathem",
   "license": "MIT",
   "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-mocks": "^1.5.8",
     "async": "1.5.2",
     "bunyan": "1.8.0",
     "config-chain": "1.1.10",
