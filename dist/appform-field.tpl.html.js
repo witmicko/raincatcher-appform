@@ -7,6 +7,10 @@ try {
 
 ngModule.run(['$templateCache', function ($templateCache) {
   $templateCache.put('wfm-template/appform-field.tpl.html',
+    '<!--\n' +
+    ' Parent view for rendering all of the field types.\n' +
+    '-->\n' +
+    '\n' +
     '<div ng-switch="fieldCtrl.field.type">\n' +
     '  <div ng-switch-when="number">\n' +
     '    <appform-field-number></appform-field-number>\n' +
