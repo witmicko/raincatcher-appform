@@ -32,9 +32,15 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '    </div>\n' +
     '  </div>\n' +
     '\n' +
+    '  <div ng-switch-when="file">\n' +
+    '    <appform-field-file></appform-field-file>\n' +
+    '  </div>\n' +
+    '\n' +
     '  <div ng-switch-when="location">\n' +
     '    <appform-field-location></appform-field-location>\n' +
     '  </div>\n' +
+    '\n' +
+    '\n' +
     '\n' +
     '  <div ng-switch-when="signature" flex class="appform-signature">\n' +
     '    <md-input-container class="md-block">\n' +

@@ -23,9 +23,15 @@
     </div>
   </div>
 
+  <div ng-switch-when="file">
+    <appform-field-file></appform-field-file>
+  </div>
+
   <div ng-switch-when="location">
     <appform-field-location></appform-field-location>
   </div>
+
+
 
   <div ng-switch-when="signature" flex class="appform-signature">
     <md-input-container class="md-block">
