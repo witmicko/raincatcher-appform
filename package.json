@@ -1,6 +1,6 @@
 {
   "name": "fh-wfm-appform",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "An appform module for WFM",
   "main": "lib/angular/appform-ng.js",
   "scripts": {
